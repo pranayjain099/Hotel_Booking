@@ -39,9 +39,10 @@
       -moz-appearance: textfield;
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
-<body>
+<body class="bg-light">
 
   <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
     <div class="container-fluid">
@@ -181,10 +182,38 @@
   </div>
 
 
+  <div class="container-fluid px-lg-4 mt-4">
+    <!-- Swiper -->
+    <div class="swiper swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="image\Slider\1.jpg" class="w-100 d-block" />
+        </div>
+        <div class="swiper-slide">
+          <img src="image\Slider\2.jpg" class="w-100 d-block" />
+        </div>
+        <div class="swiper-slide">
+          <img src="image\Slider\3.jpg" class="w-100 d-block" />
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".swiper-container", {
+      spaceBetween: 30,
+      effect: "fade",
+      loop: "true",
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      }
+    });
+  </script>
 </body>
 
 </html>
