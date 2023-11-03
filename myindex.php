@@ -38,6 +38,14 @@
     input[type=number] {
       -moz-appearance: textfield;
     }
+
+    .custom-bg {
+      background-color: #239382;
+    }
+
+    .custom-bg:hover {
+      background-color: #3bb7a5;
+    }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -181,9 +189,9 @@
     </div>
   </div>
 
-
+  <!-- Carausel -->
   <div class="container-fluid px-lg-4 mt-4">
-    <!-- Swiper -->
+
     <div class="swiper swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -198,6 +206,57 @@
       </div>
     </div>
   </div>
+
+  <!-- Check availability form -->
+
+  <div class="conatiner">
+    <div class="row">
+      <div class="col-lg-11 bg-white shadow p-4 m-4 rounded">
+        <h5 class="mb-4"> Check Booking Availability </h5>
+        <form>
+          <div class="row align-items-end">
+            <div class="col-lg-3">
+
+              <label class="form-label" style="font-weight : 500;">Check-in</label>
+              <input type="date" class="form-control shadow-none">
+
+            </div>
+            <div class="col-lg-3">
+
+              <label class="form-label" style="font-weight : 500;">Check-out</label>
+              <input type="date" class="form-control shadow-none">
+
+            </div>
+            <div class="col-lg-2">
+
+              <label class="form-label" style="font-weight : 500;">Adult</label>
+              <select class="form-select shadow-none">
+
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+
+            </div>
+            <div class="col-lg-2">
+
+              <label class="form-label" style="font-weight : 500;">Children</label>
+              <select class="form-select shadow-none">
+
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="col-lg-1 ms-lg-5 mt-4">
+              <button type="submit" class="btn text-white shadow-none custom-bg">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
