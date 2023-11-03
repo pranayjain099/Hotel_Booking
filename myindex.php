@@ -366,23 +366,94 @@
     </div>
   </div>
 
+  <!-- Our Facilities -->
 
+  <h2 class="mt-4 pt-4 mb-4 text-center fw-bold h-font">OUR Facilities</h2>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    var swiper = new Swiper(".swiper-container", {
-      spaceBetween: 30,
-      effect: "fade",
-      loop: "true",
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      }
-    });
-  </script>
+  <div class="container">
+    <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
+      <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+        <img src="image\Features\1.png" width="100px">
+      </div>
+      <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+        <img src="image\Features\1.png" width="100px">
+      </div>
+      <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+        <img src="image\Features\1.png" width="100px">
+      </div>
+      <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+        <img src="image\Features\1.png" width="100px">
+      </div>
+      <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+        <img src="image\Features\1.png" width="100px">
+      </div>
+
+      <div class="col-lg-12 text-center mt-5">
+        <a href="# " class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Facilities >>></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+
+  <h2 class="mt-4 pt-4 mb-4 text-center fw-bold h-font">Testimonials</h2>
+
+  <div class="container">
+    <div class="swiper swiper-testimonials">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="profile d-flex align-items-center p-4">
+            <img src="image/Rooms/1.jpg" width="30px">
+            <h6>Random User1</h6>
+          </div>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut asperiores rerum quisquam a autem alias in
+            dicta
+            dolorem, vel architecto, enim libero consequuntur adipisci laborum, labore consectetur unde nesciunt nobis
+          </p>
+          <div class="rating">
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper(".swiper-testimonials", {
+        spaceBetween: 30,
+        effect: "fade",
+        loop: "true",
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        }
+      });
+
+      var swiper = new Swiper(".mySwiper", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+        },
+      });
+    </script>
 </body>
 
 </html>
