@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>7Star</title>
 
-
-
+  <!-- Bootsrap link -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!-- fonts link -->
@@ -17,37 +16,11 @@
 
   <!-- icon link -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <style>
-    * {
-      font-family: 'Poppins', sans-serif;
-    }
 
-    .h-font {
-      font-family: 'Merienda', 'cursive';
-    }
-
-    /* to remove arrows in date box */
-    /* in chrome */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    /* Firefox */
-    input[type=number] {
-      -moz-appearance: textfield;
-    }
-
-    .custom-bg {
-      background-color: #239382;
-    }
-
-    .custom-bg:hover {
-      background-color: #3bb7a5;
-    }
-  </style>
+  <!-- Carausol Link -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="css/common.css">
 </head>
 
 <body class="bg-light">
