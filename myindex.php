@@ -263,16 +263,130 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 col-md-6 my-6">
+      <div class="col-lg-4 col-md-6 my-6 mb-4">
         <div class="card border-none shadow" style="max-width: 20rem; margin:auto;">
           <img src="image\Rooms\1.jpg" class="card-img-top">
           <div class="card-body">
             <h5>Premium Room</h5>
             <h6 class="mb-4"> ₹ 4000/-</h6>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="features mb-4">
+              <h6 class="mb-1">Features</h6>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> 2 Rooms</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> 1 Bathroom</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> 1 Balcony</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap ">3 Sofa</span>
+
+            </div>
+            <div class="facilities mb-4">
+              <h6 class="mb-1">Facilities</h6>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> Wifi</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> Telivision</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> Ac</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap ">Room Heater</span>
+
+            </div>
+            <div class="rating mb-4">
+              <h6 class="mb-1">Rating</h6>
+              <span class="badge rounded-pil bg-light">
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+              </span>
+
+
+            </div>
+            <div class="d-flex justify-content-evenly mb-2">
+              <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Book Now</a>
+              <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
+            </div>
           </div>
         </div>
       </div>
+      <div class="col-lg-4 col-md-6 my-6 mb-4">
+        <div class="card border-none shadow" style="max-width: 20rem; margin:auto;">
+          <img src="image\Rooms\1.jpg" class="card-img-top">
+          <div class="card-body">
+            <h5>Premium Room</h5>
+            <h6 class="mb-4"> ₹ 4000/-</h6>
+            <div class="features mb-4">
+              <h6 class="mb-1">Features</h6>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> 2 Rooms</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> 1 Bathroom</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> 1 Balcony</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap ">3 Sofa</span>
+
+            </div>
+            <div class="facilities mb-4">
+              <h6 class="mb-1">Facilities</h6>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> Wifi</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> Telivision</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> Ac</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap ">Room Heater</span>
+
+            </div>
+            <div class="rating mb-4">
+              <h6 class="mb-1">Rating</h6>
+              <span class="badge rounded-pil bg-light">
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+              </span>
+
+
+            </div>
+            <div class="d-flex justify-content-evenly mb-2">
+              <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Book Now</a>
+              <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 my-6 mb-4">
+        <div class="card border-none shadow" style="max-width: 20rem; margin:auto;">
+          <img src="image\Rooms\1.jpg" class="card-img-top">
+          <div class="card-body">
+            <h5>Premium Room</h5>
+            <h6 class="mb-4"> ₹ 4000/-</h6>
+            <div class="features mb-4">
+              <h6 class="mb-1">Features</h6>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> 2 Rooms</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> 1 Bathroom</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> 1 Balcony</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap ">3 Sofa</span>
+
+            </div>
+            <div class="facilities mb-4">
+              <h6 class="mb-1">Facilities</h6>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> Wifi</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> Telivision</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap "> Ac</span>
+              <span class="badge rounded-pil bg-light text-dark text-wrap ">Room Heater</span>
+
+            </div>
+            <div class="rating mb-4">
+              <h6 class="mb-1">Rating</h6>
+              <span class="badge rounded-pil bg-light">
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+              </span>
+
+
+            </div>
+            <div class="d-flex justify-content-evenly mb-2">
+              <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Book Now</a>
+              <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="col-lg-12 text-center mt-5">
         <a href="# " class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Rooms >>></a>
       </div>
