@@ -7,3 +7,7 @@
 
 <!-- bootstrap icon link -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<!-- including css -->
+<link rel="stylesheet" href="css/common.css">
+</head>

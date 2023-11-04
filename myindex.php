@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>7Star</title>
+  <title>7Star - Home</title>
 
   <!-- including Links -->
   <?php
@@ -13,9 +13,6 @@
 
   <!-- Carausol Link -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-  <link rel="stylesheet" href="css/common.css">
-</head>
 
 <body class="bg-light">
 
