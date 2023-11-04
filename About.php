@@ -52,25 +52,25 @@
 
     <div class="container mt-5">
         <div class="row">
-            <div class="col-lg-3 col-md-6 px-4">
+            <div class="col-lg-3 col-md-6 mb-4 px-4">
                 <div class="bg-white rounded shadow p-4 border-top border-4 text-center box">
                     <img src="image\Rooms\1.jpg" width="200px">
                     <h5 class="m-0 mt-3">100+ Rooms</h5>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 px-4">
+            <div class="col-lg-3 col-md-6 mb-4 px-4">
                 <div class="bg-white rounded shadow p-4 border-top border-4 text-center box">
                     <img src="image\Rooms\1.jpg" width="200px">
                     <h5 class="m-0 mt-3">200+ Rooms</h5>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 px-4">
+            <div class="col-lg-3 col-md-6 mb-4 px-4">
                 <div class="bg-white rounded shadow p-4 border-top border-4 text-center box">
                     <img src="image\Rooms\1.jpg" width="200px">
                     <h5 class="m-0 mt-3">300+ Staffs</h5>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 px-4">
+            <div class="col-lg-3 col-md-6  mb-4 px-4">
                 <div class="bg-white rounded shadow p-4 border-top border-4 text-center box">
                     <img src="image\Rooms\1.jpg" width="200px">
                     <h5 class="m-0 mt-3">150+ Reviews</h5>
@@ -80,6 +80,71 @@
     </div>
 
 
+    <h3 class="my-5 fw-bold h-font text-center">MANAGEMENT TEAM</h3>
+
+    <div class="container px-4">
+        <div class="swiper aboutSwiper">
+            <div class="swiper-wrapper mb-5">
+                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
+                    <img src="image\Rooms\1.jpg" class="w-100">
+                    <h5 class="mt2">Random</h5>
+                </div>
+                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
+                    <img src="image\Rooms\1.jpg" class="w-100">
+                    <h5 class="mt2">Random</h5>
+                </div>
+                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
+                    <img src="image\Rooms\1.jpg" class="w-100">
+                    <h5 class="mt2">Random</h5>
+                </div>
+                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
+                    <img src="image\Rooms\1.jpg" class="w-100">
+                    <h5 class="mt2">Random</h5>
+                </div>
+                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
+                    <img src="image\Rooms\1.jpg" class="w-100">
+                    <h5 class="mt2">Random</h5>
+                </div>
+                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
+                    <img src="image\Rooms\1.jpg" class="w-100">
+                    <h5 class="mt2">Random</h5>
+                </div>
+                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
+                    <img src="image\Rooms\1.jpg" class="w-100">
+                    <h5 class="mt2">Random</h5>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".aboutSwiper", {
+            slidesPerView: 4,
+            spaceBetween: 40,
+            pagination: {
+                el: ".swiper-pagination",
+            },
+            breakpoints: {
+                320: {   // for 320 px devices
+                    slidesPerView: 1,
+                },
+                640: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 3,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            }
+        });
+    </script>
     <!-- including Footer -->
     <?php
     require('include/footer.php')
