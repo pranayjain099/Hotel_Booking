@@ -400,11 +400,11 @@
 
   <div class="container">
     <div class="swiper swiper-testimonials">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
+      <div class="swiper-wrapper mb-5">
+        <div class="swiper-slide bg-white mb-3">
           <div class="profile d-flex align-items-center p-4">
             <img src="image/Rooms/1.jpg" width="30px">
-            <h6>Random User1</h6>
+            <h6 class="m-0 ms-2">Random User1</h6>
           </div>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut asperiores rerum quisquam a autem alias in
             dicta
@@ -417,43 +417,96 @@
             <i class="bi bi-star-fill text-warning"></i>
             <i class="bi bi-star-fill text-warning"></i>
           </div>
-          <div class="swiper-pagination"></div>
         </div>
+        <div class="swiper-slide bg-white mb-3">
+          <div class="profile d-flex align-items-center p-4">
+            <img src="image/Rooms/1.jpg" width="30px">
+            <h6 class="m-0 ms-2">Random User1</h6>
+          </div>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut asperiores rerum quisquam a autem alias in
+            dicta
+            dolorem, vel architecto, enim libero consequuntur adipisci laborum, labore consectetur unde nesciunt nobis
+          </p>
+          <div class="rating">
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+          </div>
+        </div>
+        <div class="swiper-slide bg-white mb-3">
+          <div class="profile d-flex align-items-center p-4">
+            <img src="image/Rooms/1.jpg" width="30px">
+            <h6 class="m-0 ms-2">Random User1</h6>
+          </div>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut asperiores rerum quisquam a autem alias in
+            dicta
+            dolorem, vel architecto, enim libero consequuntur adipisci laborum, labore consectetur unde nesciunt nobis
+          </p>
+          <div class="rating">
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+          </div>
+        </div>
+
+
       </div>
+      <div class="swiper-pagination"></div>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-      var swiper = new Swiper(".swiper-testimonials", {
-        spaceBetween: 30,
-        effect: "fade",
-        loop: "true",
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        }
-      });
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".swiper-container", {
+      spaceBetween: 30,
+      effect: "fade",
+      loop: "true",
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      }
+    });
 
-      var swiper = new Swiper(".mySwiper", {
-        effect: "coverflow",
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: "auto",
-        coverflowEffect: {
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
+    var swiper = new Swiper(".swiper-testimonials", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      loop: true,
+      slidesPerView: "3",
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+      },
+      breakpoints: {
+        320: {   // for 320 px devices
+          slidesPerView: 1,
         },
-        pagination: {
-          el: ".swiper-pagination",
+        640: {
+          slidesPerView: 2,
         },
-      });
-    </script>
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      }
+    });
+  </script>
 </body>
 
 </html>
