@@ -18,6 +18,7 @@
     require('include/header.php')
         ?>
 
+    <!-- Contact us Heading -->
     <div class="my-5 px-4">
         <h2 class="fw-bold h-font text-center">Contact Us</h2>
         <div class="h-line bg-dark"></div>
@@ -28,32 +29,74 @@
 
     <div class="container">
         <div class="row">
+            <!-- Left section (maps) -->
             <div class="col-lg-6 col-md-4 mb-5 px-4">
                 <div class="bg-white rounded p-4 shadow">
+                    <!-- Google maps -->
                     <iframe class="w-100 rounded mb-4" height="360px"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121059.0344739699!2d73.86296739999999!3d18.52461645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1699056721499!5m2!1sen!2sin"
                         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <!-- address -->
                     <h5>Address</h5>
                     <a href="https://maps.app.goo.gl/aFf1CLBLz7qp7z9m6" target="_blank"
                         class="d-inline-block text-decoration-none text-dark mb-2"><i class="bi bi-geo-alt-fill"></i>
                         Kothrud,Pune
                         , Maharashtra</a>
-                    <h5>Call Us</h5>
+                    <!-- Contact -->
+                    <h5 class="mt-4">Call Us</h5>
                     <a href="tel:+9179980090" class="d-inline-block mb-2 text-decoration-none text-dark"><i
                             class="bi bi-telephone-plus"></i> +9179980090</a>
                     <br>
                     <a href="tel:+9179980090" class="d-inline-block text-decoration-none text-dark"><i
-                            class="bi bi-telephone-plus"></i> +9179980090</a>
+                            class="bi bi-telephone-plus"></i> +9187965428</a>
+                    <!-- Email -->
+                    <h5 class="mt-4 ">Email</h5>
+                    <a href="mailto: pranayjain2001@gmail.com" class="d-inline-block text-decoration-none text-dark"><i
+                            class="bi bi-envelope-fill"></i> pranayjain2001@2001@gmail.com</a>
+
+                    <!-- Follow us -->
+                    <h5 class=mt-4>Follow Us</h5>
+                    <a href="#" class="d-inline-block mb-3 text-dark fs-4 me-2">
+                        <i class="bi bi-twitter me-1"></i>
+                    </a>
+
+                    <a href="#" class="d-inline-block mb-3 text-dark fs-4 me-2">
+
+                        <i class="bi bi-facebook me-1"></i>
+                    </a>
+                    <a href="#" class="d-inline-block mb-3 text-dark fs-4">
+
+                        <i class="bi bi-instagram me-1"></i>
+                    </a>
                 </div>
             </div>
+            <!-- Right section -->
             <div class="col-lg-6 col-md-4  px-4">
-                <div class="bg-white rounded p-4 shadow border-top border-4 border-dark pop">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="image\Features\1.png" width="40px">
-                        <h5 class="m-0 ms-3">WIFI</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quos
-                        saepe inventore possimus suscipit laudantium commodi cum, delectus rem</p>
+                <div class="bg-white rounded p-4 shadow">
+                    <form>
+                        <h5>Send a message</h5>
+                        <div class="mt-3">
+                            <label class="form-label" style="font-weight:550;">Name
+                            </label>
+                            <input type="text" class="form-control shadow-none">
+                        </div>
+                        <div class="mt-3">
+                            <label class="form-label" style="font-weight:550;">Email
+                            </label>
+                            <input type="email" class="form-control shadow-none">
+                        </div>
+                        <div class="mt-3">
+                            <label class="form-label" style="font-weight:550;">Subject
+                            </label>
+                            <input type="text" class="form-control shadow-none">
+                        </div>
+                        <div class="mt-3">
+                            <label class="form-label" style="font-weight:550;">Message
+                            </label>
+                            <textarea class="form-control shadow-none" rows="3" style="resize:none;"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-white custom-bg mt-3"> Send </button>
+                    </form>
                 </div>
             </div>
         </div>
