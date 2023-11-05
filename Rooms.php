@@ -84,10 +84,13 @@
             <div class="col-lg-9 col-md-12 px-4">
                 <div class="card mb-4 border-0 shadow">
                     <div class="row g-0 p-3 align-item-center">
-                        <div class="col-md-4">
+                        <div class="col-md-5">
+                            <img src="image\Rooms\1.jpg" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-5">
                             <img src="..." class="img-fluid rounded-start" alt="...">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-2">
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
                                 <p class="card-text">This is a wider card with supporting text below as a natural
