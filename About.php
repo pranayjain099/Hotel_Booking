@@ -142,7 +142,7 @@
                 1024: {
                     slidesPerView: 3,
                 },
-            }
+            },
         });
     </script>
     <!-- including Footer -->
