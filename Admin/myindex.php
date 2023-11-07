@@ -1,6 +1,6 @@
 <!-- Including db_config -->
 <?php
-require('/include/db_config.php');
+require('include\db_config.php');
 ?>
 
 <!DOCTYPE html>
@@ -27,22 +27,41 @@ require('/include/db_config.php');
 
 <body class="bg-light">
     <div class="login-form text-center rounded bg-white shadow overflow-hidden">
-        <form>
+        <!-- We dont want to send the data so action nhi likha  form mein-->
+        <form method="POST">
             <h4 class="bg-dark text-white py-3">Admin Login Panel</h4>
             <div class="p-4">
                 <div class="mb-3">
 
-                    <input name="admin_name" type="text" class="form-control shadow-none text-center"
+                    <input name="admin_name" required type="text" class="form-control shadow-none text-center"
                         placeholder="Admin Name">
                 </div>
                 <div class="mb-4">
-                    <input name="admin_pass" type="password" class="form-control shadow-none text-center"
+                    <input name="admin_pass" required type="password" class="form-control shadow-none text-center"
                         placeholder="Password">
                 </div>
-                <button type="submit" class="btn text-white custom-bg shadow-none"> LOGIN </button>
+                <button name="login" type="submit" class="btn text-white custom-bg shadow-none"> LOGIN </button>
             </div>
         </form>
     </div>
+
+    <?php
+    // agar post method se koi data submit hua hai and usme login naam ka index hai , then first filter the data 
+    if (isset($_POST['login'])) {
+        // we are calling the filteration function and passing parameter as POST only because post ke ander ka data array type he hota hai.
+    
+        $frm_data = filteration($_POST); //and recieved data is stored in new varibale.
+    
+
+    }
+
+    ?>
+
+
+
+
+
+
 
     <!-- including scripts -->
     <?php
