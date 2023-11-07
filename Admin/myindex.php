@@ -1,3 +1,8 @@
+<!-- Including db_config -->
+<?php
+require('/include/db_config.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
