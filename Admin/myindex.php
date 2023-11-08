@@ -53,6 +53,19 @@ require('include\db_config.php');
         $frm_data = filteration($_POST); //and recieved data is stored in new varibale.
     
 
+        // Table name or column names are written in backtick (` `) and values are written in single quote (' ').
+        $query = "SELECT * FROM `admin_cred` WHERE `admin_name`=? AND `admin_pass`=?";
+
+        // contains adminname and passowrd
+        $values = [$frm_data['admin_name'], $frm_data['admin_pass']];
+
+        // datatype of values 
+        $datatype = "ss"; // ss means string(for admin name) string (for admin password).
+    
+        //calling the function
+        select($query, $values, $datatype);
+
+
     }
 
     ?>

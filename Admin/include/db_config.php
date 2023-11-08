@@ -34,7 +34,35 @@ function filteration($data)
 // function for prepared statement
 // in prepared statement we preapre the query then bind the parameters in statements then execute it and we get the result
 
-function select()
+// Takes three parameters sql query , values and datatype.
+function select($sql, $values, $datatypes)
+{
+    // using con varibale globally
+    $con = $GLOBALS['con'];
+
+    // if query gets prepared then store it in varibale else die.
+    // stmt is variable defined by us you can give any name.
+    if ($stmt = mysqli_prepare($con, $sql)) {
+        // then we will bind the parameters
+        // now to send multiple values dynamically in mysqli_bind_param() we used splat operator (3 dots before variable).
+        // mysqli_bind_param($stmt, $datatypes, $a,$b,$c); instead of this 
+        // do this
+        mysqli_bind_param($stmt, $datatypes, ...$values);
+
+        // after binding execute the stmt and ab uske sath values binf ho chuki h
+        if (mysqli_stmt_execute($stmt)) { // if sucessfull gets executed then
+            // store the result jo bhi result aaye query chalne ke baad
+            $res = mysqli_stmt_get_result($stmt);
+            return $res;
+        } else {
+            die("Query cannot be executed - select function");
+        }
+
+    } else {
+        die("Query cannot be prepared - select function");
+    }
+
+}
 
 
 
