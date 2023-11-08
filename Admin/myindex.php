@@ -83,13 +83,6 @@ require('include\essentials.php');
     }
 
     ?>
-
-
-
-
-
-
-
     <!-- including scripts -->
     <?php
     require('include/script.php')
