@@ -45,19 +45,20 @@ function select($sql, $values, $datatypes)
     if ($stmt = mysqli_prepare($con, $sql)) {
         // then we will bind the parameters
         // now to send multiple values dynamically in mysqli_bind_param() we used splat operator (3 dots before variable).
-        // mysqli_bind_param($stmt, $datatypes, $a,$b,$c); instead of this 
+        // mysqli_stmta_bind_param($stmt, $datatypes, $a,$b,$c); instead of this 
         // do this
-        mysqli_bind_param($stmt, $datatypes, ...$values);
+        mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
 
         // after binding execute the stmt and ab uske sath values binf ho chuki h
         if (mysqli_stmt_execute($stmt)) { // if sucessfull gets executed then
             // store the result jo bhi result aaye query chalne ke baad
             $res = mysqli_stmt_get_result($stmt);
+            mysqli_stmt_close($stmt); // closing the preapred statement
             return $res;
         } else {
+            mysqli_stmt_close($stmt);
             die("Query cannot be executed - select function");
         }
-
     } else {
         die("Query cannot be prepared - select function");
     }

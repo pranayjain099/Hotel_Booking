@@ -1,6 +1,7 @@
-<!-- Including db_config -->
+<!-- Including db_config and essentials -->
 <?php
 require('include\db_config.php');
+require('include\essentials.php');
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +55,8 @@ require('include\db_config.php');
     
 
         // Table name or column names are written in backtick (` `) and values are written in single quote (' ').
+    
+        // what is "?" = we are going to use prepared statement here
         $query = "SELECT * FROM `admin_cred` WHERE `admin_name`=? AND `admin_pass`=?";
 
         // contains adminname and passowrd
@@ -63,9 +66,14 @@ require('include\db_config.php');
         $datatype = "ss"; // ss means string(for admin name) string (for admin password).
     
         //calling the function
-        select($query, $values, $datatype);
+        $res = select($query, $values, $datatype);
 
-
+        // we recieved data in $res now fetch num_rows if it is equal to 1.
+        if ($res->num_rows == 1) {
+            echo "Got user";
+        } else {
+            alert('error', 'Login failed - Invalid Credentials!'); // function in essentials.php
+        }
     }
 
     ?>
