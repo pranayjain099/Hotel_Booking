@@ -70,7 +70,13 @@ require('include\essentials.php');
 
         // we recieved data in $res now fetch num_rows if it is equal to 1.
         if ($res->num_rows == 1) {
-            echo "Got user";
+
+            // fetching the data of that row and storing in variable.
+            $row = mysqli_fetch_assoc($res);
+            session_start();
+            $_SESSION["adminlogin"] = true;
+            $_SESSION["adminId"] = $row['sr_no'];
+            redirect('dashboard.php');
         } else {
             alert('error', 'Login failed - Invalid Credentials!'); // function in essentials.php
         }

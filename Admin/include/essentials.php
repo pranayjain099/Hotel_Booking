@@ -1,5 +1,13 @@
 <?php
 
+// Redirect funtion = It will take url as arguent and this function will redirect us to that url.
+function redirect($url)
+{
+    echo "<script>
+        window.location.href='$url';
+    </script>";
+}
+
 function alert($type, $msg)
 {
     // if suncess login then alert-success class else alert-danger class , stored that in varibale and then added in class.
