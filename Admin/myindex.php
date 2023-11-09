@@ -2,6 +2,14 @@
 <?php
 require('include\db_config.php');
 require('include\essentials.php');
+
+// Starting the session
+session_start();
+
+// Condittion On pressing back button when we are on admin panel
+if ((isset($_SESSION["adminLogin"]) && $_SESSION["adminLogin"] == true)) {
+    redirect("dashboard.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -73,8 +81,7 @@ require('include\essentials.php');
 
             // fetching the data of that row and storing in variable.
             $row = mysqli_fetch_assoc($res);
-            session_start();
-            $_SESSION["adminlogin"] = true;
+            $_SESSION["adminLogin"] = true;
             $_SESSION["adminId"] = $row['sr_no'];
             redirect('dashboard.php');
         } else {

@@ -8,15 +8,9 @@ function adminLogin()
     session_start();
     // agar adminlogin naam ka index set nhi hai or uski value true nhi hai 
     if (!(isset($_SESSION["adminLogin"]) && $_SESSION["adminLogin"] == true)) {
-        echo "<script>
-            window.location.href='myindex.php';
-        </script>";
+        redirect("myindex.php");
     }
 }
-
-
-
-
 
 
 // Redirect funtion = It will take url as arguent and this function will redirect us to that url.
