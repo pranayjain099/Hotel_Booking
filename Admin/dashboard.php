@@ -1,3 +1,9 @@
+<?php
+require('include/essentials.php');
+adminLogin();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
