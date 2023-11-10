@@ -57,8 +57,8 @@ if ((isset($_SESSION["adminLogin"]) && $_SESSION["adminLogin"] == true)) {
     <?php
     // agar post method se koi data submit hua hai and usme login naam ka index hai , then first filter the data 
     if (isset($_POST['login'])) {
-        // we are calling the filteration function and passing parameter as POST only because post ke ander ka data array type he hota hai.
-    
+
+        // Filtering the post data 
         $frm_data = filteration($_POST); //and recieved data is stored in new varibale.
     
 
