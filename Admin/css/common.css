@@ -46,3 +46,12 @@ input[type=number] {
     top: 25px;
     right: 25px;
 }
+
+#dashboard-menu {
+    position: fixed;
+    height: 100%;
+}
+
+#main-content {
+    margin-top: 60px;
+}
