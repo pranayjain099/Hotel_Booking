@@ -31,14 +31,44 @@ session_regenerate_id(true);
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <h5 class="card-title m-0">General Settings</h5>
-                            <button>Edit</button>
+                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#general-s">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </button>
                         </div>
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <h6 class="card-subtitle mb-1 fw-bold">Site Title</h6>
+                        <p class="card-text">content</p>
+                        <h6 class="card-subtitle mb-1 fw-bold">About us</h6>
+                        <p class="card-text">content</p>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="general-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">General Settings</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Site Title</label>
+                                        <input type="text" class="form-control shadow-none">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Address</label>
+                                    <textarea class="form-control shadow-none" rows="6"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn text-secondary shadow-none"
+                                        data-bs-dismiss="modal">CANCEL</button>
+                                    <button type="button" class="btn custom-bg text-white shadow-none">SUBMIT</button>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
