@@ -42,7 +42,7 @@ session_regenerate_id(true);
                         <p class="card-text">content</p>
                     </div>
                 </div>
-                <!-- Modal -->
+                <!-- General settings Modal -->
                 <div class="modal fade" id="general-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -54,13 +54,15 @@ session_regenerate_id(true);
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label class="form-label">Site Title</label>
-                                        <input type="text" class="form-control shadow-none">
+                                        <input type="text" name="site_title" class="form-control shadow-none">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Address</label>
+                                        <textarea name="site_about" class="form-control shadow-none"
+                                            rows="6"></textarea>
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Address</label>
-                                    <textarea class="form-control shadow-none" rows="6"></textarea>
-                                </div>
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn text-secondary shadow-none"
                                         data-bs-dismiss="modal">CANCEL</button>
@@ -79,6 +81,41 @@ session_regenerate_id(true);
     <?php
     require('include/script.php');
     ?>
+
+    <script>
+        // we will store data of general setting modal
+        let general_data;
+
+
+        function get_general() {
+            let site_title;
+            let site_about;
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("Post", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            // data recieved here now 
+
+            // xhr.onreadystatechange = function{
+            //     if(this.readyState==4 && this.status==200){
+
+            //     }
+            // }
+            // you can write like this but to write this in short there is a way
+
+            xhr.onload = function () {
+                general_data = this.responseText;
+                console.log(general_data);
+            }
+            xhr.send('get_general');
+        }
+
+        // when we load window then this function will be called
+        window.onload = function () {
+            get_general();
+        }
+    </script>
 </body>
 
 </html>
