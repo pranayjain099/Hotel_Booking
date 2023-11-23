@@ -64,10 +64,13 @@ session_regenerate_id(true);
                                     </div>
                                 </div>
 
+                                <!-- When we click on edit and change the site tile and about but we changed and do cancel then data gets saved but we dont want this so here we put onlick and waha ki value ko databse mein jo hai whi set krdi -->
                                 <div class="modal-footer">
-                                    <button type="button" class="btn text-secondary shadow-none"
-                                        data-bs-dismiss="modal">CANCEL</button>
-                                    <button type="button" class="btn custom-bg text-white shadow-none">SUBMIT</button>
+                                    <button type="button" onclick="site_title.value = general_data.site_title ,
+                                        site_about.value = general_data.site_about"
+                                        class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                                    <button type="button" onclick="update_general(site_title.value , site_about.value)"
+                                        class="btn custom-bg text-white shadow-none">SUBMIT</button>
                                 </div>
                             </div>
                         </form>
@@ -97,7 +100,7 @@ session_regenerate_id(true);
 
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "ajax/settings_crud.php", true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');  // we have to apply this header when we send data thorugh post.
 
             // data recieved here now 
 
@@ -121,12 +124,28 @@ session_regenerate_id(true);
             xhr.send('get_general');
         }
 
+
+
+        function update_general(site_title_val, site_about_val) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+
+                var myModal = document.getElementById('general-s');
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+
+                console.log(this.responseText);
+            }
+            xhr.send('site_title=' + site_title_val + '&site_about=' + site_about_val + '&update_general');
+        }
+
         // when we load window then this function will be called
         window.onload = function () {
             get_general();
         }
-
-
     </script>
 </body>
 
