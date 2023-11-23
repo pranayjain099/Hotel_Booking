@@ -137,7 +137,16 @@ session_regenerate_id(true);
                 var modal = bootstrap.Modal.getInstance(myModal);
                 modal.hide();
 
-                console.log(this.responseText);
+                // updating without reloading
+                if (this.responseText == 1) {
+                    alert('success', 'Changes saved!');
+                    get_general();
+                } else {
+                    alert('error', 'No Changes saved!');
+                }
+
+
+
             }
             xhr.send('site_title=' + site_title_val + '&site_about=' + site_about_val + '&update_general');
         }
