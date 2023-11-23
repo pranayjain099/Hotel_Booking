@@ -37,9 +37,9 @@ session_regenerate_id(true);
                             </button>
                         </div>
                         <h6 class="card-subtitle mb-1 fw-bold">Site Title</h6>
-                        <p class="card-text">content</p>
+                        <p class="card-text" id="site_title"></p>
                         <h6 class="card-subtitle mb-1 fw-bold">About us</h6>
-                        <p class="card-text">content</p>
+                        <p class="card-text" id="site_about"></p>
                     </div>
                 </div>
                 <!-- General settings Modal -->
@@ -83,16 +83,16 @@ session_regenerate_id(true);
     ?>
 
     <script>
+
         // we will store data of general setting modal
         let general_data;
 
-
         function get_general() {
-            let site_title;
-            let site_about;
+            let site_title = document.getElementById('site_title');
+            let site_about = document.getElementById('site_about');
 
             let xhr = new XMLHttpRequest();
-            xhr.open("Post", "ajax/settings_crud.php", true);
+            xhr.open("POST", "ajax/settings_crud.php", true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
             // data recieved here now 
@@ -105,8 +105,11 @@ session_regenerate_id(true);
             // you can write like this but to write this in short there is a way
 
             xhr.onload = function () {
-                general_data = this.responseText;
-                console.log(general_data);
+                // JSON.parse converts json data into js object.
+                general_data = JSON.parse(this.responseText);
+
+                site_title.innerText = general_data.site_title;
+                site_about.innerText = general_data.site_about;
             }
             xhr.send('get_general');
         }
@@ -115,6 +118,8 @@ session_regenerate_id(true);
         window.onload = function () {
             get_general();
         }
+
+
     </script>
 </body>
 
