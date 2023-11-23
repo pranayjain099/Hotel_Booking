@@ -54,12 +54,13 @@ session_regenerate_id(true);
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label class="form-label">Site Title</label>
-                                        <input type="text" name="site_title" class="form-control shadow-none">
+                                        <input type="text" name="site_title" id="site_title_input"
+                                            class="form-control shadow-none">
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Address</label>
-                                        <textarea name="site_about" class="form-control shadow-none"
-                                            rows="6"></textarea>
+                                        <label class="form-label">About us</label>
+                                        <textarea name="site_about" id="site_about_input"
+                                            class="form-control shadow-none" rows="6"></textarea>
                                     </div>
                                 </div>
 
@@ -91,6 +92,9 @@ session_regenerate_id(true);
             let site_title = document.getElementById('site_title');
             let site_about = document.getElementById('site_about');
 
+            let site_title_input = document.getElementById('site_title_input');
+            let site_about_input = document.getElementById('site_about_input');
+
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "ajax/settings_crud.php", true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -110,6 +114,9 @@ session_regenerate_id(true);
 
                 site_title.innerText = general_data.site_title;
                 site_about.innerText = general_data.site_about;
+
+                site_title_input.value = general_data.site_title;
+                site_about_input.value = general_data.site_about;
             }
             xhr.send('get_general');
         }

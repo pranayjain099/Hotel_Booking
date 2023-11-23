@@ -1,5 +1,3 @@
-<!-- This is the main file for all the crud operations , All the queries will be fired from here only , We will make dynamic queries , queries that will filter the data-->
-
 <?php
 // Connecting to the Database
 $hname = 'localhost'; // Hostname
