@@ -183,6 +183,25 @@ session_regenerate_id(true);
             xhr.send('site_title=' + site_title_val + '&site_about=' + site_about_val + '&update_general');
         }
 
+        function update_shutdown(val) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+
+                if (this.responseText == 1 && general_data.shutdown == 0) {
+                    alert('success', 'Site has been shutdown');
+                } else {
+                    alert('success', 'Shutdown mode off !');
+                }
+                get_general();
+
+
+            }
+            xhr.send('update_shutdown=' + val);
+        }
+
         // when we load window then this function will be called
         window.onload = function () {
             get_general();
