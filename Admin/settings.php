@@ -27,7 +27,7 @@ session_regenerate_id(true);
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
                 <h3 class="mb-4">SETTINGS</h3>
                 <!-- General Settings Section -->
-                <div class="card">
+                <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <h5 class="card-title m-0">General Settings</h5>
@@ -80,19 +80,20 @@ session_regenerate_id(true);
 
                 <!-- Shutdown section (Site down krna ki koi booking na kar paye)-->
 
-                <div class="card">
+                <div class="card border-0 shadow-sm">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <h5 class="card-title m-0">Shutdown Website</h5>
-                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#general-s">
-                                <i class="bi bi-pencil-square"></i> Edit
-                            </button>
+                            <!-- This is switch taken from bootstrap -->
+                            <div class="form-check form-switch">
+                                <form>
+                                    <input onchange="update_shutdown(this.value)" class="form-check-input"
+                                        type="checkbox" id="shutdown-toggle">
+                                </form>
+                            </div>
                         </div>
-                        <h6 class="card-subtitle mb-1 fw-bold">Site Title</h6>
-                        <p class="card-text" id="site_title"></p>
-                        <h6 class="card-subtitle mb-1 fw-bold">About us</h6>
-                        <p class="card-text" id="site_about"></p>
+                        <p class="card-text">No customers will be allowed to book hotel room , when shutdown mode is
+                            turned on</p>
                     </div>
                 </div>
             </div>
@@ -116,6 +117,8 @@ session_regenerate_id(true);
             let site_title_input = document.getElementById('site_title_input');
             let site_about_input = document.getElementById('site_about_input');
 
+            let shutdown_toggle = document.getElementById('shutdown-toggle')
+
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "ajax/settings_crud.php", true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');  // we have to apply this header when we send data thorugh post.
@@ -138,6 +141,17 @@ session_regenerate_id(true);
 
                 site_title_input.value = general_data.site_title;
                 site_about_input.value = general_data.site_about;
+
+                // It means site is up.
+                // we will recieve 3 data in general_data site_tite,site_about and shutdown and shutdown is boolean so its either 0 or 1.
+                // 1 means site is down
+                if (general_data.shutdown == 0) {
+                    shutdown_toggle.checked = false;
+                    shutdown_toggle.value = 0;
+                } else {
+                    shutdown_toggle.checked = true;
+                    shutdown_toggle.value = 1;
+                }
             }
             xhr.send('get_general');
         }
