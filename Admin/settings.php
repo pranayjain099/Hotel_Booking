@@ -46,7 +46,7 @@ session_regenerate_id(true);
                 <div class="modal fade" id="general-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <form>
+                        <form id="general_s_form">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">General Settings</h5>
@@ -55,12 +55,12 @@ session_regenerate_id(true);
                                     <div class="mb-3">
                                         <label class="form-label">Site Title</label>
                                         <input type="text" name="site_title" id="site_title_input"
-                                            class="form-control shadow-none">
+                                            class="form-control shadow-none" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">About us</label>
                                         <textarea name="site_about" id="site_about_input"
-                                            class="form-control shadow-none" rows="6"></textarea>
+                                            class="form-control shadow-none" rows="6" required></textarea>
                                     </div>
                                 </div>
 
@@ -69,8 +69,7 @@ session_regenerate_id(true);
                                     <button type="button" onclick="site_title.value = general_data.site_title ,
                                         site_about.value = general_data.site_about"
                                         class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
-                                    <button type="button" onclick="update_general(site_title.value , site_about.value)"
-                                        class="btn custom-bg text-white shadow-none">SUBMIT</button>
+                                    <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
                                 </div>
                             </div>
                         </form>
@@ -110,12 +109,21 @@ session_regenerate_id(true);
         // we will store data of general setting modal
         let general_data;
 
+        let site_title_input = document.getElementById('site_title_input');
+        let site_about_input = document.getElementById('site_about_input');
+
+        let general_s_form = document.getElementById('general_s_form');
+
+        general_s_form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Will avoid page from refresh means will avoid form to submit.
+            update_general(site_title_input.value, site_about_input.value)
+
+        })
+
+
         function get_general() {
             let site_title = document.getElementById('site_title');
             let site_about = document.getElementById('site_about');
-
-            let site_title_input = document.getElementById('site_title_input');
-            let site_about_input = document.getElementById('site_about_input');
 
             let shutdown_toggle = document.getElementById('shutdown-toggle')
 
