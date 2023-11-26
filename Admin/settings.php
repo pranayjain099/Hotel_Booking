@@ -53,12 +53,12 @@ session_regenerate_id(true);
                                 </div>
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label class="form-label">Site Title</label>
+                                        <label class="form-label fw-bold">Site Title</label>
                                         <input type="text" name="site_title" id="site_title_input"
                                             class="form-control shadow-none" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">About us</label>
+                                        <label class="form-label fw-bold">About us</label>
                                         <textarea name="site_about" id="site_about_input"
                                             class="form-control shadow-none" rows="6" required></textarea>
                                     </div>
@@ -78,7 +78,6 @@ session_regenerate_id(true);
                 </div>
 
                 <!-- Shutdown section (Site down krna ki koi booking na kar paye)-->
-
                 <div class="card border-0 shadow-sm">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
@@ -93,6 +92,23 @@ session_regenerate_id(true);
                         </div>
                         <p class="card-text">No customers will be allowed to book hotel room , when shutdown mode is
                             turned on</p>
+                    </div>
+                </div>
+
+                <!-- Contact Detail Section -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="card-title m-0">Contact Settings</h5>
+                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#general-s">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </button>
+                        </div>
+                        <h6 class="card-subtitle mb-1 fw-bold">Site Title</h6>
+                        <p class="card-text" id="site_title"></p>
+                        <h6 class="card-subtitle mb-1 fw-bold">About us</h6>
+                        <p class="card-text" id="site_about"></p>
                     </div>
                 </div>
             </div>
