@@ -106,6 +106,7 @@ session_regenerate_id(true);
                             </button>
                         </div>
                         <div class="row">
+                            <!-- Contact setting column -->
                             <div class="col-lg-6">
                                 <div class="mb-4">
                                     <h6 class="card-subtitle mb-1 fw-bold">Address</h6>
@@ -131,149 +132,155 @@ session_regenerate_id(true);
                                     <p class="card-text" id="email"></p>
                                 </div>
                             </div>
+                            <!-- Social Link column -->
                             <div class="col-lg-6">
                                 <div class="mb-4">
                                     <div class="mb-4">
                                         <h6 class="card-subtitle mb-1 fw-bold">Social Links</h6>
                                         <p class="card-text mb-1">
                                             <i class="bi bi-facebook me-1"></i>
-                                            <span id="pn1"></span>
+                                            <span id="fb"></span>
                                         </p>
                                         <p class="card-text">
                                             <i class="bi bi-instagram me-1"></i>
-                                            <span id="pn2"></span>
+                                            <span id="insta"></span>
                                         </p>
                                         <p class="card-text">
                                             <i class="bi bi-twitter me-1"></i>
-                                            <span id="pn2"></span>
+                                            <span id="tw"></span>
                                         </p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <div class="mb-4">
+                                            <h6 class="card-subtitle mb-1 fw-bold">iFrame</h6>
+                                            <iframe id="iframe" class="border p-2 w-100" lodaing="lazy"></iframe>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <?php
-    require('include/script.php');
-    ?>
+        <?php
+        require('include/script.php');
+        ?>
 
-    <script>
+        <script>
 
-        // we will store data of general setting modal
-        let general_data;
+            // we will store data of general setting modal
+            let general_data;
 
-        let site_title_input = document.getElementById('site_title_input');
-        let site_about_input = document.getElementById('site_about_input');
+            let site_title_input = document.getElementById('site_title_input');
+            let site_about_input = document.getElementById('site_about_input');
 
-        let general_s_form = document.getElementById('general_s_form');
+            let general_s_form = document.getElementById('general_s_form');
 
-        general_s_form.addEventListener('submit', function (e) {
-            e.preventDefault(); // Will avoid page from refresh means will avoid form to submit.
-            update_general(site_title_input.value, site_about_input.value)
+            general_s_form.addEventListener('submit', function (e) {
+                e.preventDefault(); // Will avoid page from refresh means will avoid form to submit.
+                update_general(site_title_input.value, site_about_input.value)
 
-        })
+            })
 
 
-        function get_general() {
-            let site_title = document.getElementById('site_title');
-            let site_about = document.getElementById('site_about');
+            function get_general() {
+                let site_title = document.getElementById('site_title');
+                let site_about = document.getElementById('site_about');
 
-            let shutdown_toggle = document.getElementById('shutdown-toggle')
+                let shutdown_toggle = document.getElementById('shutdown-toggle')
 
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "ajax/settings_crud.php", true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');  // we have to apply this header when we send data thorugh post.
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "ajax/settings_crud.php", true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');  // we have to apply this header when we send data thorugh post.
 
-            // data recieved here now 
+                // data recieved here now 
 
-            // xhr.onreadystatechange = function{
-            //     if(this.readyState==4 && this.status==200){
+                // xhr.onreadystatechange = function{
+                //     if(this.readyState==4 && this.status==200){
 
-            //     }
-            // }
-            // you can write like this but to write this in short there is a way
+                //     }
+                // }
+                // you can write like this but to write this in short there is a way
 
-            xhr.onload = function () {
-                // JSON.parse converts json data into js object.
-                general_data = JSON.parse(this.responseText);
+                xhr.onload = function () {
+                    // JSON.parse converts json data into js object.
+                    general_data = JSON.parse(this.responseText);
 
-                site_title.innerText = general_data.site_title;
-                site_about.innerText = general_data.site_about;
+                    site_title.innerText = general_data.site_title;
+                    site_about.innerText = general_data.site_about;
 
-                site_title_input.value = general_data.site_title;
-                site_about_input.value = general_data.site_about;
+                    site_title_input.value = general_data.site_title;
+                    site_about_input.value = general_data.site_about;
 
-                // It means site is up.
-                // we will recieve 3 data in general_data site_tite,site_about and shutdown and shutdown is boolean so its either 0 or 1.
-                // 1 means site is down
-                if (general_data.shutdown == 0) {
-                    shutdown_toggle.checked = false;
-                    shutdown_toggle.value = 0;
-                } else {
-                    shutdown_toggle.checked = true;
-                    shutdown_toggle.value = 1;
+                    // It means site is up.
+                    // we will recieve 3 data in general_data site_tite,site_about and shutdown and shutdown is boolean so its either 0 or 1.
+                    // 1 means site is down
+                    if (general_data.shutdown == 0) {
+                        shutdown_toggle.checked = false;
+                        shutdown_toggle.value = 0;
+                    } else {
+                        shutdown_toggle.checked = true;
+                        shutdown_toggle.value = 1;
+                    }
                 }
+                xhr.send('get_general');
             }
-            xhr.send('get_general');
-        }
 
 
 
-        function update_general(site_title_val, site_about_val) {
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "ajax/settings_crud.php", true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            function update_general(site_title_val, site_about_val) {
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "ajax/settings_crud.php", true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-            xhr.onload = function () {
+                xhr.onload = function () {
 
-                var myModal = document.getElementById('general-s');
-                var modal = bootstrap.Modal.getInstance(myModal);
-                modal.hide();
+                    var myModal = document.getElementById('general-s');
+                    var modal = bootstrap.Modal.getInstance(myModal);
+                    modal.hide();
 
-                // updating without reloading
-                if (this.responseText == 1) {
-                    alert('success', 'Changes saved!');
+                    // updating without reloading
+                    if (this.responseText == 1) {
+                        alert('success', 'Changes saved!');
+                        get_general();
+                    } else {
+                        alert('error', 'No Changes saved!');
+                    }
+
+
+
+                }
+                xhr.send('site_title=' + site_title_val + '&site_about=' + site_about_val + '&update_general');
+            }
+
+            function update_shutdown(val) {
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "ajax/settings_crud.php", true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                xhr.onload = function () {
+
+                    if (this.responseText == 1 && general_data.shutdown == 0) {
+                        alert('success', 'Site has been shutdown');
+                    } else {
+                        alert('success', 'Shutdown mode off !');
+                    }
                     get_general();
-                } else {
-                    alert('error', 'No Changes saved!');
+
+
                 }
-
-
-
+                xhr.send('update_shutdown=' + val);
             }
-            xhr.send('site_title=' + site_title_val + '&site_about=' + site_about_val + '&update_general');
-        }
 
-        function update_shutdown(val) {
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "ajax/settings_crud.php", true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-            xhr.onload = function () {
-
-                if (this.responseText == 1 && general_data.shutdown == 0) {
-                    alert('success', 'Site has been shutdown');
-                } else {
-                    alert('success', 'Shutdown mode off !');
-                }
+            // when we load window then this function will be called
+            window.onload = function () {
                 get_general();
-
-
             }
-            xhr.send('update_shutdown=' + val);
-        }
-
-        // when we load window then this function will be called
-        window.onload = function () {
-            get_general();
-        }
-    </script>
+        </script>
 </body>
 
 </html>
