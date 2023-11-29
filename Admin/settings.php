@@ -173,7 +173,7 @@ session_regenerate_id(true);
         <script>
 
             // we will store data of general setting modal
-            let general_data;
+            let general_data, contacts_data;
 
             let site_title_input = document.getElementById('site_title_input');
             let site_about_input = document.getElementById('site_about_input');
@@ -274,6 +274,28 @@ session_regenerate_id(true);
 
                 }
                 xhr.send('update_shutdown=' + val);
+            }
+
+            function get_contacts() {
+
+
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "ajax/settings_crud.php", true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');  // we have to apply this header when we send data thorugh post.
+
+                // data recieved here now 
+
+                // xhr.onreadystatechange = function{
+                //     if(this.readyState==4 && this.status==200){
+
+                //     }
+                // }
+                // you can write like this but to write this in short there is a way
+
+                xhr.onload = function () {
+
+                }
+                xhr.send('get_general');
             }
 
             // when we load window then this function will be called
