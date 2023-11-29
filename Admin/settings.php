@@ -141,7 +141,7 @@ session_regenerate_id(true);
                                             <i class="bi bi-facebook me-1"></i>
                                             <span id="fb"></span>
                                         </p>
-                                        <p class="card-text">
+                                        <p class="card-text mb-1">
                                             <i class="bi bi-instagram me-1"></i>
                                             <span id="insta"></span>
                                         </p>
@@ -289,7 +289,13 @@ session_regenerate_id(true);
 
                 xhr.onload = function () {
                     contacts_data = JSON.parse(this.responseText);
-                    console.log(contacts_data);
+                    contacts_data = Object.values(contacts_data);
+
+                    for (i = 0; i < contacts_p_id.length; i++) {
+                        document.getElementById(contacts_p_id[i]).innerText = contacts_data[i + 1];
+                    }
+
+
                 }
                 xhr.send('get_contacts');
             }
