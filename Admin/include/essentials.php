@@ -10,7 +10,7 @@ function adminLogin()
     if (!(isset($_SESSION["adminLogin"]) && $_SESSION["adminLogin"] == true)) {
         redirect("myindex.php");
     }
-    session_regenerate_id(true);
+
 }
 
 
@@ -20,6 +20,7 @@ function redirect($url)
     echo "<script>
         window.location.href='$url';
     </script>";
+    exit;
 }
 
 function alert($type, $msg)

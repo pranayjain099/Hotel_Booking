@@ -278,29 +278,26 @@ session_regenerate_id(true);
 
             function get_contacts() {
 
+                // on]ption one either create 8 9 variable jitne table mein hai then doc.getelemntbyid kro else create a array.
+                // storing ids of all the tags 
+                let contacts_p_id = ['address', 'gmap', 'pn1', 'pn2', 'email', 'fb', 'insta', 'tw'];
+                let iframe = document.getElementById('iframe');
 
                 let xhr = new XMLHttpRequest();
                 xhr.open("POST", "ajax/settings_crud.php", true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');  // we have to apply this header when we send data thorugh post.
-
-                // data recieved here now 
-
-                // xhr.onreadystatechange = function{
-                //     if(this.readyState==4 && this.status==200){
-
-                //     }
-                // }
-                // you can write like this but to write this in short there is a way
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function () {
-
+                    contacts_data = JSON.parse(this.responseText);
+                    console.log(contacts_data);
                 }
-                xhr.send('get_general');
+                xhr.send('get_contacts');
             }
 
             // when we load window then this function will be called
             window.onload = function () {
                 get_general();
+                get_contacts();
             }
         </script>
 </body>
