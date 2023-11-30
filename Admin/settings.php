@@ -160,6 +160,41 @@ session_regenerate_id(true);
                             </div>
 
                         </div>
+
+                    </div>
+                </div>
+                <!-- Contacts details Modal -->
+                <div class="modal fade" id="contacts-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form id="general_s_form">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Contacts Settings</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Site Title</label>
+                                        <input type="text" name="site_title" id="site_title_input"
+                                            class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">About us</label>
+                                        <textarea name="site_about" id="site_about_input"
+                                            class="form-control shadow-none" rows="6" required></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- When we click on edit and change the site tile and about but we changed and do cancel then data gets saved but we dont want this so here we put onlick and waha ki value ko databse mein jo hai whi set krdi -->
+                                <div class="modal-footer">
+                                    <button type="button" onclick="site_title.value = general_data.site_title ,
+                                        site_about.value = general_data.site_about"
+                                        class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                                    <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -294,7 +329,7 @@ session_regenerate_id(true);
                     for (i = 0; i < contacts_p_id.length; i++) {
                         document.getElementById(contacts_p_id[i]).innerText = contacts_data[i + 1];
                     }
-
+                    iframe.src = contacts_data[9];
 
                 }
                 xhr.send('get_contacts');
