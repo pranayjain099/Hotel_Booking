@@ -78,7 +78,7 @@ session_regenerate_id(true);
                 </div>
 
                 <!-- Shutdown section (Site down krna ki koi booking na kar paye)-->
-                <div class="card border-0 shadow-sm">
+                <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <h5 class="card-title m-0">Shutdown Website</h5>
@@ -166,29 +166,89 @@ session_regenerate_id(true);
                 <!-- Contacts details Modal -->
                 <div class="modal fade" id="contacts-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <form id="general_s_form">
+                    <div class="modal-dialog modal-lg">
+                        <form id="contacts_s_form">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Contacts Settings</h5>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="mb-3">
-                                        <label class="form-label fw-bold">Site Title</label>
-                                        <input type="text" name="site_title" id="site_title_input"
-                                            class="form-control shadow-none" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label fw-bold">About us</label>
-                                        <textarea name="site_about" id="site_about_input"
-                                            class="form-control shadow-none" rows="6" required></textarea>
-                                    </div>
-                                </div>
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <!-- Address -->
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Address</label>
+                                                    <input type="text" name="address" id="address_input"
+                                                        class="form-control shadow-none" required>
+                                                </div>
+                                                <!-- Google map -->
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Google Map link</label>
+                                                    <input type="text" name="gmap" id="gmap_input"
+                                                        class="form-control shadow-none" required>
+                                                </div>
+                                                <!-- Phone number -->
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Phone Number (with country
+                                                        code)</label>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i
+                                                                class="bi bi-telephone-fill"></i></span>
+                                                        <input type="text" name="pn1" id="pn1_input"
+                                                            class="form-control shadow-none" required>
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i
+                                                                class="bi bi-telephone-fill"></i></span>
+                                                        <input type="text" name="pn2" id="pn2_input"
+                                                            class="form-control shadow-none">
+                                                    </div>
+                                                </div>
+                                                <!-- Email -->
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Email</label>
+                                                    <input type="email" name="email" id="email_input"
+                                                        class="form-control shadow-none" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Social Links</label>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"> <i class="bi bi-facebook">
+                                                            </i></span>
+                                                        <input type="text" name="fb" id="fb_input"
+                                                            class="form-control shadow-none" required>
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i class="bi bi-instagram">
+                                                            </i></span>
+                                                        <input type="text" name="insta" id="insta_input"
+                                                            class="form-control shadow-none" required>
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i class="bi bi-twitter">
+                                                            </i></span>
+                                                        <input type="text" name="tw" id="tw_input"
+                                                            class="form-control shadow-none">
+                                                    </div>
 
-                                <!-- When we click on edit and change the site tile and about but we changed and do cancel then data gets saved but we dont want this so here we put onlick and waha ki value ko databse mein jo hai whi set krdi -->
+                                                </div>
+                                                <!-- iFrame -->
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">iFrame Src</label>
+                                                    <input type="text" name="iframe" id="iframe_input"
+                                                        class="form-control shadow-none" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
                                 <div class="modal-footer">
-                                    <button type="button" onclick="site_title.value = general_data.site_title ,
-                                        site_about.value = general_data.site_about"
+                                    <button type="button" onclick="contacts_input(contacts_data)"
                                         class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
                                     <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
                                 </div>
@@ -214,6 +274,7 @@ session_regenerate_id(true);
             let site_about_input = document.getElementById('site_about_input');
 
             let general_s_form = document.getElementById('general_s_form');
+            let contacts_s_form = document.getElementById('general_s_form');
 
             general_s_form.addEventListener('submit', function (e) {
                 e.preventDefault(); // Will avoid page from refresh means will avoid form to submit.
@@ -330,11 +391,19 @@ session_regenerate_id(true);
                         document.getElementById(contacts_p_id[i]).innerText = contacts_data[i + 1];
                     }
                     iframe.src = contacts_data[9];
+                    contacts_input(contacts_data);
 
                 }
                 xhr.send('get_contacts');
             }
 
+            function contacts_input(data) {
+                let contacts_input_id = ['address_input', 'gmap_input', 'pn1_input', 'pn2_input', 'email_input', 'fb_input', 'insta_input', 'tw_input', 'iframe_input'];
+
+                for (i = 0; i < contacts_input_id.length; i++) {
+                    document.getElementById(contacts_input_id[i]).value = data[i + 1];
+                }
+            }
             // when we load window then this function will be called
             window.onload = function () {
                 get_general();
