@@ -270,11 +270,10 @@ session_regenerate_id(true);
             // we will store data of general setting modal
             let general_data, contacts_data;
 
+            let general_s_form = document.getElementById('general_s_form');
             let site_title_input = document.getElementById('site_title_input');
             let site_about_input = document.getElementById('site_about_input');
-
-            let general_s_form = document.getElementById('general_s_form');
-            let contacts_s_form = document.getElementById('general_s_form');
+            let contacts_s_form = document.getElementById('contacts_s_form');
 
             general_s_form.addEventListener('submit', function (e) {
                 e.preventDefault(); // Will avoid page from refresh means will avoid form to submit.
@@ -335,6 +334,7 @@ session_regenerate_id(true);
 
                 xhr.onload = function () {
 
+                    // to hide modal
                     var myModal = document.getElementById('general-s');
                     var modal = bootstrap.Modal.getInstance(myModal);
                     modal.hide();
@@ -403,6 +403,44 @@ session_regenerate_id(true);
                 for (i = 0; i < contacts_input_id.length; i++) {
                     document.getElementById(contacts_input_id[i]).value = data[i + 1];
                 }
+            }
+
+            contacts_s_form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                update_contacts();
+            })
+
+            // Update contacts
+            function update_contacts() {
+                let index = ['address', 'gmap', 'pn1', 'pn2', 'email', 'fb', 'insta', 'tw', 'iframe'];
+                let contacts_input_id = ['address_input', 'gmap_input', 'pn1_input', 'pn2_input', 'email_input', 'fb_input', 'insta_input', 'tw_input', 'iframe_input'];
+
+                let data_str = "";
+
+                for (i = 0; i < index.length; i++) {
+                    data_str += index[i] + "=" + document.getElementById(contacts_input_id[i]).value + '&';
+                }
+                data_str += "update_contacts";
+
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "ajax/settings_crud.php", true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                xhr.onload = function () {
+                    var myModal = document.getElementById('contacts-s');
+                    var modal = bootstrap.Modal.getInstance(myModal);
+                    modal.hide();
+                    if (this.responseText == 1) {
+                        alert('success', 'Changes Saved');
+                        get_contacts();
+                    } else {
+                        alert('error', 'No changes');
+                    }
+
+
+                }
+                xhr.send(data_str);
+
             }
             // when we load window then this function will be called
             window.onload = function () {
