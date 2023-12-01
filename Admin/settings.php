@@ -278,21 +278,21 @@ session_regenerate_id(true);
                 <div class="modal fade" id="team-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <form id="general_s_form">
+                        <form id="team_s_form">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">General Settings</h5>
+                                    <h5 class="modal-title">Add Team Member</h5>
                                 </div>
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label class="form-label fw-bold">Site Title</label>
-                                        <input type="text" name="site_title" id="site_title_input"
+                                        <label class="form-label fw-bold">Name</label>
+                                        <input type="text" name="member_name" id="member_name_input"
                                             class="form-control shadow-none" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label fw-bold">About us</label>
-                                        <textarea name="site_about" id="site_about_input"
-                                            class="form-control shadow-none" rows="6" required></textarea>
+                                        <label class="form-label fw-bold">Picture</label>
+                                        <input type="file" name="member_picture" id="member_picture_input"
+                                            accept=".jpg, .png, .webp, .jpeg" class="form-control shadow-none" required>
                                     </div>
                                 </div>
 
