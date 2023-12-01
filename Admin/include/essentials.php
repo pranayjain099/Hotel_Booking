@@ -1,5 +1,8 @@
 <?php
 
+define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Hotel_Booking/image/');
+
+define('ABOUT_FOLDER', 'about/');
 
 //  Check if admin is logged in
 
@@ -12,7 +15,6 @@ function adminLogin()
     }
 
 }
-
 
 // Redirect funtion = It will take url as arguent and this function will redirect us to that url.
 function redirect($url)
@@ -36,3 +38,27 @@ function alert($type, $msg)
                 </div>
             alert;
 }
+
+function uploadImage($image, $folder)
+{
+    $valid_mime = ['image/jpeg', 'image/png', 'image/webp'];
+    $img_mime = $image['type'];
+
+    if (!in_array($img_mime, $valid_mime)) {
+        return 'inv_img';  // invalid image mine or format
+    } else if ($image['size'] / (1024 * 1024) > 2) {
+        return 'inv_size';  // invalid size greater then 2mb
+    } else {
+        // extracting extension of image
+        $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+        $rname = 'IMG_' . random_int(11111, 99999) . ".$ext";
+        $img_path = UPLOAD_IMAGE_PATH . $folder . $rname;
+        if (move_uploaded_file($image['tmp_name'], $img_path)) {
+            return $rname;
+        } else {
+            return 'upd_failed';
+        }
+    }
+}
+
+?>

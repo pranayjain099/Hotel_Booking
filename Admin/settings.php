@@ -280,9 +280,11 @@ session_regenerate_id(true);
                     <div class="modal-dialog">
                         <form id="team_s_form">
                             <div class="modal-content">
+                                <!-- Modal head -->
                                 <div class="modal-header">
                                     <h5 class="modal-title">Add Team Member</h5>
                                 </div>
+                                <!-- Modal Body -->
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label class="form-label fw-bold">Name</label>
@@ -323,6 +325,11 @@ session_regenerate_id(true);
         let site_title_input = document.getElementById('site_title_input');
         let site_about_input = document.getElementById('site_about_input');
         let contacts_s_form = document.getElementById('contacts_s_form');
+
+        // management team ids
+        let team_s_form = document.getElementById('team_s_form');
+        let member_name_input = document.getElementById('member_name_input');
+        let member_picture_input = document.getElementById('member_picture_input');
 
         general_s_form.addEventListener('submit', function (e) {
             e.preventDefault(); // Will avoid page from refresh means will avoid form to submit.
@@ -375,7 +382,7 @@ session_regenerate_id(true);
         }
 
 
-
+        // Update General
         function update_general(site_title_val, site_about_val) {
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "ajax/settings_crud.php", true);
@@ -395,8 +402,6 @@ session_regenerate_id(true);
                 } else {
                     alert('error', 'No Changes saved!');
                 }
-
-
 
             }
             xhr.send('site_title=' + site_title_val + '&site_about=' + site_about_val + '&update_general');
@@ -455,7 +460,7 @@ session_regenerate_id(true);
         }
 
         contacts_s_form.addEventListener('submit', function (e) {
-            e.preventDefault();
+            e.preventDefault(); // prevents default behaviour of page jo ki hai page ka refresh hona and submit ho jana.
             update_contacts();
         })
 
@@ -490,12 +495,46 @@ session_regenerate_id(true);
             }
             xhr.send(data_str);
 
-        }
-        // when we load window then this function will be called
-        window.onload = function () {
-            get_general();
-            get_contacts();
-        }
+            // Management Team
+            team_s_form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                add_member();
+            });
+
+            function add_member() {
+
+                let data = new FormData();
+                data.append('name', member_name_input.value);
+                data.append('picture', member_name_input.files[0]);
+                data.append('add_member', '');
+
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "ajax/settings_crud.php", true);
+
+                xhr.onload = function () {
+
+                    // // to hide modal
+                    // var myModal = document.getElementById('general-s');
+                    // var modal = bootstrap.Modal.getInstance(myModal);
+                    // modal.hide();
+
+                    // // updating without reloading
+                    // if (this.responseText == 1) {
+                    //     alert('success', 'Changes saved!');
+                    //     get_general();
+                    // } else {
+                    //     alert('error', 'No Changes saved!');
+                    // }
+                }
+
+                xhr.send(data);
+
+            }
+            // when we load window then this function will be called
+            window.onload = function () {
+                get_general();
+                get_contacts();
+            }
     </script>
 </body>
 

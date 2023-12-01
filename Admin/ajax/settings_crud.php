@@ -59,4 +59,12 @@ if (isset($_POST['update_contacts'])) {
     echo $res;
 }
 
+// Management team
+
+if (isset($_POST['add_member'])) {
+
+    $frm_data = filteration($_POST);
+
+    uploadImage($_FILES['pictures'], ABOUT_FOLDER);
+}
 ?>
