@@ -46,7 +46,7 @@ function uploadImage($image, $folder)
 
     if (!in_array($img_mime, $valid_mime)) {
         return 'inv_img';  // invalid image mine or format
-    } else if ($image['size'] / (1024 * 1024) > 2) {
+    } else if (($image['size'] / (1024 * 1024)) > 2) {
         return 'inv_size';  // invalid size greater then 2mb
     } else {
         // extracting extension of image
@@ -56,7 +56,7 @@ function uploadImage($image, $folder)
         if (move_uploaded_file($image['tmp_name'], $img_path)) {
             return $rname;
         } else {
-            return 'upd_failed';
+            return 'update_failed';
         }
     }
 }

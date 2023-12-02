@@ -494,47 +494,53 @@ session_regenerate_id(true);
 
             }
             xhr.send(data_str);
+        }
+        // Management Team
+        team_s_form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            add_member();
+        });
 
-            // Management Team
-            team_s_form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                add_member();
-            });
+        function add_member() {
 
-            function add_member() {
+            let data = new FormData();
+            data.append('name', member_name_input.value);
+            data.append('picture', member_picture_input.files[0]);
+            data.append('add_member', '');
 
-                let data = new FormData();
-                data.append('name', member_name_input.value);
-                data.append('picture', member_name_input.files[0]);
-                data.append('add_member', '');
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
 
-                let xhr = new XMLHttpRequest();
-                xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.onload = function () {
 
-                xhr.onload = function () {
 
-                    // // to hide modal
-                    // var myModal = document.getElementById('general-s');
-                    // var modal = bootstrap.Modal.getInstance(myModal);
-                    // modal.hide();
+                // to hide modal
+                var myModal = document.getElementById('team-s');
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
 
-                    // // updating without reloading
-                    // if (this.responseText == 1) {
-                    //     alert('success', 'Changes saved!');
-                    //     get_general();
-                    // } else {
-                    //     alert('error', 'No Changes saved!');
-                    // }
+                if (this.responseText == 'inv_img') {
+                    alert('error', 'only JPG and PNG Images are allowed');
+                    get_general();
+                } else if (this.responseText == 'inv_size') {
+                    alert('error', 'Image shouldbe less than 2MB JPG and PNG images are allowed');
+                } else if (this.responseText == 'update_failed') {
+                    alert('error', 'Image upload failed , Server down ');
+                } else {
+                    alert('sucess', 'New member added');
+                    member_name_input.value = '';
+                    member_picture_input.value = '';
                 }
-
-                xhr.send(data);
-
             }
-            // when we load window then this function will be called
-            window.onload = function () {
-                get_general();
-                get_contacts();
-            }
+
+            xhr.send(data);
+
+        }
+        // when we load window then this function will be called
+        window.onload = function () {
+            get_general();
+            get_contacts();
+        }
     </script>
 </body>
 
