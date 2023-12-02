@@ -28,7 +28,13 @@ function filteration($data)
     }
     return $data; // returning the filtered data.
 }
+function selectAll($table)
+{
+    $con = $GLOBALS['con'];
+    $res = mysqli_query($con, "SELECT * FROM $table");
+    return $res;
 
+}
 // function for prepared statement
 // in prepared statement we preapre the query then bind the parameters in statements then execute it and we get the result
 

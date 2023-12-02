@@ -1,5 +1,11 @@
 <?php
 
+// Frontend purpose data
+
+define('SITE_URL', 'http://127.0.0.1/Hotel_Booking/');
+define('ABOUT_IMG_PATH', '../image/about/');
+
+// backend upload process needs this data
 define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Hotel_Booking/image/');
 
 define('ABOUT_FOLDER', 'about/');
