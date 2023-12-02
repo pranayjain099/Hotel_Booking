@@ -527,7 +527,7 @@ session_regenerate_id(true);
                 } else if (this.responseText == 'update_failed') {
                     alert('error', 'Image upload failed , Server down ');
                 } else {
-                    alert('sucess', 'New member added');
+                    alert('success', 'New member added');
                     member_name_input.value = '';
                     member_picture_input.value = '';
                 }
