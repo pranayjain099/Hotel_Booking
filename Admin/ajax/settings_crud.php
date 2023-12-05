@@ -5,7 +5,7 @@ require('../include/essentials.php');
 // to check wether the admin is logged in or not.
 adminLogin();
 
-if (isset($_POST['get_general'])) {
+if(isset($_POST['get_general'])) {
     // iss ddatabse mein ek he record hoga becoz site title and description ek he toh hoga site ka so always srno=1.
     $q = "SELECT * FROM `settings` Where `sr_no`=?";
     $values = [1];
@@ -16,7 +16,7 @@ if (isset($_POST['get_general'])) {
 }
 
 // update general
-if (isset($_POST['update_general'])) {
+if(isset($_POST['update_general'])) {
 
     $frm_data = filteration($_POST);
     $q = "UPDATE `settings` SET `site_title`=?,`site_about`=?  WHERE `sr_no`=?";
@@ -26,7 +26,7 @@ if (isset($_POST['update_general'])) {
 }
 
 // update shutdown
-if (isset($_POST['update_shutdown'])) {
+if(isset($_POST['update_shutdown'])) {
 
     // frm_data will contain either 0 or 1 now agar site on hai and we shut the site then function call hoga and 0 pass hoga and hume 1 krna hai so yaha hum if else laga rahe agar 0 aara hai toh 1 krdo or 1 aara toh 0 krdo.
     $frm_data = ($_POST['update_shutdown'] == 0) ? 1 : 0;
@@ -37,7 +37,7 @@ if (isset($_POST['update_shutdown'])) {
 }
 
 // get contacts
-if (isset($_POST['get_contacts'])) {
+if(isset($_POST['get_contacts'])) {
     $q = "SELECT * FROM `contact_details` Where `sr_no`=?";
     $values = [1];
     $res = select($q, $values, "i");
@@ -47,7 +47,7 @@ if (isset($_POST['get_contacts'])) {
 }
 
 // update contacts
-if (isset($_POST['update_contacts'])) {
+if(isset($_POST['update_contacts'])) {
 
     $frm_data = filteration($_POST);
     $q = "UPDATE `contact_details` SET `address`=?,`gmap`=?,`pn1`=?,`pn2`=?,`email`=?,`fb`=?,`insta`=?,`tw`=?,`iframe`=? WHERE `sr_no`=?";
@@ -60,17 +60,17 @@ if (isset($_POST['update_contacts'])) {
 
 // Management team
 
-if (isset($_POST['add_member'])) {
+if(isset($_POST['add_member'])) {
 
     $frm_data = filteration($_POST);
 
     $img_r = uploadImage($_FILES['picture'], ABOUT_FOLDER);
 
-    if ($img_r == 'inv_img') {
+    if($img_r == 'inv_img') {
         echo $img_r;
-    } else if ($img_r == 'inv_size') {
+    } else if($img_r == 'inv_size') {
         echo $img_r;
-    } else if ($img_r == 'update_failed') {
+    } else if($img_r == 'update_failed') {
         echo $img_r;
     } else {
         $q = "INSERT INTO `team_details`(`name`, `picture`) VALUES (?,?)";
@@ -79,18 +79,18 @@ if (isset($_POST['add_member'])) {
         echo $res;
     }
 }
-if (isset($_POST['get_members'])) {
+if(isset($_POST['get_members'])) {
 
     $res = selectAll('team_details');
 
-    while ($row = mysqli_fetch_assoc($res)) {
+    while($row = mysqli_fetch_assoc($res)) {
         $path = ABOUT_IMG_PATH;
         echo <<<data
             <div class="col-md-2 mb-3">
                 <div class="card bg-dark text-white">
                     <img src="$path$row[picture]" class="card-img">
                     <div class="card-img-overlay text-end">
-                        <button type="button" class="btn btn-danger btn-sm shadow-none">
+                        <button type="button" onclick="rem_member($row[sr_no])" class="btn btn-danger btn-sm shadow-none">
                             <i class="bi bi-trash"></i> Delete
                         </button>
                     </div>
@@ -98,6 +98,24 @@ if (isset($_POST['get_members'])) {
                 </div>
             </div>     
         data;
+    }
+}
+if(isset($_POST['rem_member'])) {
+
+    $frm_data = filteration($_POST);
+    $values = [$frm_data['rem_member']];
+
+    $pre_q = "SELECT* FROM `team_details` WHERE `sr_no`=?";
+    $res = select($pre_q, $values, 'i');
+    $img = mysqli_fetch_assoc($res);
+
+    if(deleteImage($img['picture'], ABOUT_FOLDER)) {
+        $q = "DELETE FROM `team_details` WHERE `sr_no`=?";
+        $res = delete($q, $values, 'i');
+        echo $res;
+
+    } else {
+        echo 0;
     }
 }
 ?>

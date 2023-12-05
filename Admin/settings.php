@@ -299,8 +299,7 @@ session_regenerate_id(true);
 
                                 <!-- When we click on edit and change the site tile and about but we changed and do cancel then data gets saved but we dont want this so here we put onlick and waha ki value ko databse mein jo hai whi set krdi -->
                                 <div class="modal-footer">
-                                    <button type="button" onclick="site_title.value = general_data.site_title ,
-                                        site_about.value = general_data.site_about"
+                                    <button type="button" onclick="member_name.value='',member_picture.value='' "
                                         class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
                                     <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
                                 </div>
@@ -546,6 +545,22 @@ session_regenerate_id(true);
                 document.getElementById('team-data').innerHTML = this.responseText;
             }
             xhr.send('get_members');
+        }
+
+        function rem_member(val) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                if (this.responseText == 1) {
+                    alert('success', 'Member removed!');
+                    get_members();
+                } else {
+                    alert('error', 'Server Down! ');
+                }
+            }
+            xhr.send('rem_member=' + val);
         }
         // when we load window then this function will be called
         window.onload = function () {
