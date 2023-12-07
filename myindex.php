@@ -337,25 +337,34 @@
     <a href="# " class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Know More >>></a>
   </div>
   <!-- Reach Us -->
+  <?php
+  $contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
+  $values = [1];
+  $contact_r = mysqli_fetch_assoc(select($contact_q, $values, 'i'));
+  print_r($contact_r);
+  ?>
 
   <h2 class="mt-4 pt-4 mb-4 text-center fw-bold h-font">Reach Us</h2>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 p-4 mb-lg-0 mb-3 bg-white rounded">
-        <iframe class="w-100 rounded" height="360px"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121059.0344739699!2d73.86296739999999!3d18.52461645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1699056721499!5m2!1sen!2sin"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe class="w-100 rounded" height="360px" src="<?php echo $contact_r['iframe'] ?>" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
       <div class="col-lg-4 col-md-4">
         <!-- Telephone Number -->
         <div class="bg-white p-4 rounded mb-4">
           <h5>Call Us</h5>
-          <a href="tel:+9179980090" class="d-inline-block mb-2 text-decoration-none text-dark"><i
-              class="bi bi-telephone-plus"></i> +9179980090</a>
+          <a href="tel:+<?php echo $contact_r['pn1'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark"><i
+              class="bi bi-telephone-plus"></i> +
+            <?php echo $contact_r['pn1'] ?>
+          </a>
           <br>
-          <a href="tel:+9179980090" class="d-inline-block text-decoration-none text-dark"><i
-              class="bi bi-telephone-plus"></i> +9179980090</a>
+          <a href="tel:+<?php echo $contact_r['pn2'] ?>" class="d-inline-block text-decoration-none text-dark"><i
+              class="bi bi-telephone-plus"></i> +
+            <?php echo $contact_r['pn2'] ?>
+          </a>
         </div>
         <!-- Follow US -->
         <div class="bg-white p-4 rounded mb-4">
