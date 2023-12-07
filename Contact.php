@@ -27,32 +27,51 @@
             blanditiis id rem quisquam repellendus nostrum asperiores?</p>
     </div>
 
+    <?php
+    $contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
+    $values = [1];
+    $contact_r = mysqli_fetch_assoc(select($contact_q, $values, 'i'));
+
+    ?>
+
     <div class="container">
         <div class="row">
             <!-- Left section (maps) -->
             <div class="col-lg-6 col-md-4 mb-5 px-4">
                 <div class="bg-white rounded p-4 shadow">
                     <!-- Google maps -->
-                    <iframe class="w-100 rounded mb-4" height="360px"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121059.0344739699!2d73.86296739999999!3d18.52461645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1699056721499!5m2!1sen!2sin"
+                    <iframe class="w-100 rounded mb-4" height="360px" src="<?php echo $contact_r['iframe'] ?>"
                         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <!-- address -->
                     <h5>Address</h5>
-                    <a href="https://maps.app.goo.gl/aFf1CLBLz7qp7z9m6" target="_blank"
+                    <a href="<?php echo $contact_r['gmap'] ?>" target="_blank"
                         class="d-inline-block text-decoration-none text-dark mb-2"><i class="bi bi-geo-alt-fill"></i>
-                        Kothrud,Pune
-                        , Maharashtra</a>
+                        <?php echo $contact_r['address'] ?>
+                    </a>
                     <!-- Contact -->
                     <h5 class="mt-4">Call Us</h5>
-                    <a href="tel:+9179980090" class="d-inline-block mb-2 text-decoration-none text-dark"><i
-                            class="bi bi-telephone-plus"></i> +9179980090</a>
+                    <a href="tel:+<?php echo $contact_r['pn1'] ?>"
+                        class="d-inline-block mb-2 text-decoration-none text-dark"><i class="bi bi-telephone-plus"></i>
+                        +
+                        <?php echo $contact_r['pn1'] ?>
+                    </a>
                     <br>
-                    <a href="tel:+9179980090" class="d-inline-block text-decoration-none text-dark"><i
-                            class="bi bi-telephone-plus"></i> +9187965428</a>
+                    <?php
+                    if ($contact_r['pn2'] != '') {
+                        echo <<<data
+                            <a href="tel: +$contact_r[pn2]"class="d-inline-block text-decoration-none text-dark"><i
+                                class="bi bi-telephone-plus"></i> +
+                                $contact_r[pn2]
+                            </a>
+                    data;
+                    }
+                    ?>
                     <!-- Email -->
                     <h5 class="mt-4 ">Email</h5>
-                    <a href="mailto: pranayjain2001@gmail.com" class="d-inline-block text-decoration-none text-dark"><i
-                            class="bi bi-envelope-fill"></i> pranayjain2001@2001@gmail.com</a>
+                    <a href="mailto: <?php echo $contact_r['email'] ?>"
+                        class="d-inline-block text-decoration-none text-dark"><i class="bi bi-envelope-fill"></i>
+                        <?php echo $contact_r['email'] ?>
+                    </a>
 
                     <!-- Follow us -->
                     <h5 class=mt-4>Follow Us</h5>
