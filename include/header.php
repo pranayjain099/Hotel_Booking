@@ -1,8 +1,11 @@
 <?php
 require('Admin/include/db_config.php');
 require('Admin/include/essentials.php');
-?>
 
+$contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
+$values = [1];
+$contact_r = mysqli_fetch_assoc(select($contact_q, $values, 'i'));
+?>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">

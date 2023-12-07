@@ -27,13 +27,6 @@
             blanditiis id rem quisquam repellendus nostrum asperiores?</p>
     </div>
 
-    <?php
-    $contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
-    $values = [1];
-    $contact_r = mysqli_fetch_assoc(select($contact_q, $values, 'i'));
-
-    ?>
-
     <div class="container">
         <div class="row">
             <!-- Left section (maps) -->

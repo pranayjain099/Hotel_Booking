@@ -9,23 +9,32 @@
         </div>
         <div class="col-lg-4 p-4">
             <h5 class="mb-3">Links</h5>
-            <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a><br>
-            <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Rooms</a><br>
-            <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a><br>
-            <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Contact Us</a><br>
-            <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">About</a>
+            <a href="myindex.php" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a><br>
+            <a href="Rooms.php" class="d-inline-block mb-2 text-dark text-decoration-none">Rooms</a><br>
+            <a href="Facilities.php" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a><br>
+            <a href="Contact.php" class="d-inline-block mb-2 text-dark text-decoration-none">Contact Us</a><br>
+            <a href="About.php" class="d-inline-block mb-2 text-dark text-decoration-none">About Us</a>
         </div>
         <div class="col-lg-4 p-4">
             <h5 class="mb-3">Follow Us</h5>
-            <a href="#" class="d-inline-block text-dark text-decoration-none mb-3">
-                <i class="bi bi-twitter me-1"></i>Twitter
-            </a>
-            <br>
-            <a href="#" class="d-inline-block text-dark text-decoration-none mb-3">
+            <?php
+            if ($contact_r['tw'] != '') {
+                echo <<<data
+                <a href="$contact_r[tw]" class="d-inline-block mb-3"> 
+                  <span class="badge bg-light text-dark fs-6 p-2">
+                    <i class="bi bi-twitter me-1"></i>Twitter
+                  </span>
+                 </a>
+                 </br>
+                data;
+            }
+            ?>
+
+            <a href="<?php echo $contact_r['fb'] ?>" class="d-inline-block text-dark text-decoration-none mb-3">
                 <i class="bi bi-facebook me-1"></i>Facebook
             </a>
             <br>
-            <a href="#" class="d-inline-block text-dark text-decoration-none mb-3">
+            <a href="<?php echo $contact_r['insta'] ?>" class="d-inline-block text-dark text-decoration-none mb-3">
                 <i class="bi bi-instagram me-1"></i>Instagram
             </a>
             <br>
