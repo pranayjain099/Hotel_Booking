@@ -85,34 +85,19 @@
     <div class="container px-4">
         <div class="swiper aboutSwiper">
             <div class="swiper-wrapper mb-5">
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="image\Rooms\1.jpg" class="w-100">
-                    <h5 class="mt2">Random</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="image\Rooms\1.jpg" class="w-100">
-                    <h5 class="mt2">Random</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="image\Rooms\1.jpg" class="w-100">
-                    <h5 class="mt2">Random</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="image\Rooms\1.jpg" class="w-100">
-                    <h5 class="mt2">Random</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="image\Rooms\1.jpg" class="w-100">
-                    <h5 class="mt2">Random</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="image\Rooms\1.jpg" class="w-100">
-                    <h5 class="mt2">Random</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="image\Rooms\1.jpg" class="w-100">
-                    <h5 class="mt2">Random</h5>
-                </div>
+
+                <?php
+                $about_r = selectAll('team_details');
+                $path = "/Hotel_Booking" . ABOUT_IMG_PATH;
+                while ($row = mysqli_fetch_assoc($about_r)) {
+                    echo <<<data
+                    <div class="swiper-slide bg-white text-center overflow-hidden rounded">
+                        <img src="$path$row[picture]" class="w-100">
+                        <h5 class="mt2">$row[name]</h5>
+                    </div>
+                    data;
+                }
+                ?>
             </div>
             <div class="swiper-pagination"></div>
         </div>
