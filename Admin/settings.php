@@ -195,13 +195,13 @@ session_regenerate_id(true);
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i
                                                                 class="bi bi-telephone-fill"></i></span>
-                                                        <input type="text" name="pn1" id="pn1_input"
+                                                        <input type="number" name="pn1" id="pn1_input"
                                                             class="form-control shadow-none" required>
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i
                                                                 class="bi bi-telephone-fill"></i></span>
-                                                        <input type="text" name="pn2" id="pn2_input"
+                                                        <input type="number" name="pn2" id="pn2_input"
                                                             class="form-control shadow-none">
                                                     </div>
                                                 </div>

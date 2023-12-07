@@ -9,25 +9,30 @@ $db = '7_star';
 $con = mysqli_connect($hname, $uname, $pass, $db);
 
 // Die if connection was not successful
-if(!$con) {
-    die('Cannot connect to database'.mysqli_connect_error());
+if (!$con) {
+    die('Cannot connect to database' . mysqli_connect_error());
 }
 
 // This function will filter the data
 // We will recieve data in form of associative array
-function filteration($data) {
-    foreach($data as $key => $value) {
+function filteration($data)
+{
+    foreach ($data as $key => $value) {
         // We will use 4 function to filter the data.
         // We will filter the data and again store that in the data so the previous value will be overwritten.
-        $data[$key] = trim($value);
-        $data[$key] = stripcslashes($value);
-        $data[$key] = htmlspecialchars($value);
-        $data[$key] = strip_tags($value);
 
+        // value is overwritten and again stored in value 
+        $value = trim($value);
+        $value = stripslashes($value);
+        $value = strip_tags($value);
+        $value = htmlspecialchars($value);
+
+        $data[$key] = $value;
     }
     return $data; // returning the filtered data.
 }
-function selectAll($table) {
+function selectAll($table)
+{
     $con = $GLOBALS['con'];
     $res = mysqli_query($con, "SELECT * FROM $table");
     return $res;
@@ -37,13 +42,14 @@ function selectAll($table) {
 // in prepared statement we preapre the query then bind the parameters in statements then execute it and we get the result
 
 // Takes three parameters sql query , values and datatype.
-function select($sql, $values, $datatypes) {
+function select($sql, $values, $datatypes)
+{
     // using con varibale globally
     $con = $GLOBALS['con'];
 
     // if query gets prepared then store it in varibale else die.
     // stmt is variable defined by us you can give any name.
-    if($stmt = mysqli_prepare($con, $sql)) {
+    if ($stmt = mysqli_prepare($con, $sql)) {
         // then we will bind the parameters
         // now to send multiple values dynamically in mysqli_bind_param() we used splat operator (3 dots before variable).
         // mysqli_stmta_bind_param($stmt, $datatypes, $a,$b,$c); instead of this 
@@ -51,7 +57,7 @@ function select($sql, $values, $datatypes) {
         mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
 
         // after binding execute the stmt and ab uske sath values binf ho chuki h
-        if(mysqli_stmt_execute($stmt)) { // if sucessfull gets executed then
+        if (mysqli_stmt_execute($stmt)) { // if sucessfull gets executed then
             // store the result jo bhi result aaye query chalne ke baad
             $res = mysqli_stmt_get_result($stmt);
             mysqli_stmt_close($stmt); // closing the preapred statement
@@ -68,12 +74,13 @@ function select($sql, $values, $datatypes) {
 
 // update function
 
-function update($sql, $values, $datatypes) {
+function update($sql, $values, $datatypes)
+{
     $con = $GLOBALS['con'];
-    if($stmt = mysqli_prepare($con, $sql)) {
+    if ($stmt = mysqli_prepare($con, $sql)) {
         mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
 
-        if(mysqli_stmt_execute($stmt)) {
+        if (mysqli_stmt_execute($stmt)) {
 
             $res = mysqli_stmt_affected_rows($stmt);
             mysqli_stmt_close($stmt);
@@ -89,12 +96,13 @@ function update($sql, $values, $datatypes) {
 }
 
 // insert function
-function insert($sql, $values, $datatypes) {
+function insert($sql, $values, $datatypes)
+{
     $con = $GLOBALS['con'];
-    if($stmt = mysqli_prepare($con, $sql)) {
+    if ($stmt = mysqli_prepare($con, $sql)) {
         mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
 
-        if(mysqli_stmt_execute($stmt)) {
+        if (mysqli_stmt_execute($stmt)) {
 
             $res = mysqli_stmt_affected_rows($stmt);
             mysqli_stmt_close($stmt);
@@ -111,12 +119,13 @@ function insert($sql, $values, $datatypes) {
 
 // delete function
 
-function delete($sql, $values, $datatypes) {
+function delete($sql, $values, $datatypes)
+{
     $con = $GLOBALS['con'];
-    if($stmt = mysqli_prepare($con, $sql)) {
+    if ($stmt = mysqli_prepare($con, $sql)) {
         mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
 
-        if(mysqli_stmt_execute($stmt)) {
+        if (mysqli_stmt_execute($stmt)) {
 
             $res = mysqli_stmt_affected_rows($stmt);
             mysqli_stmt_close($stmt);
