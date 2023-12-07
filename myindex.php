@@ -361,27 +361,41 @@
             <?php echo $contact_r['pn1'] ?>
           </a>
           <br>
-          <a href="tel:+<?php echo $contact_r['pn2'] ?>" class="d-inline-block text-decoration-none text-dark"><i
-              class="bi bi-telephone-plus"></i> +
-            <?php echo $contact_r['pn2'] ?>
-          </a>
+          <?php
+          if ($contact_r['pn2'] != '') {
+            echo <<<data
+                <a href="tel: +$contact_r[pn2]"class="d-inline-block text-decoration-none text-dark"><i
+                  class="bi bi-telephone-plus"></i> +
+                  $contact_r[pn2]
+                </a>
+                data;
+          }
+          ?>
+
         </div>
         <!-- Follow US -->
         <div class="bg-white p-4 rounded mb-4">
           <h5>Follow Us</h5>
-          <a href="#" class="d-inline-block mb-3">
-            <span class="badge bg-light text-dark fs-6 p-2">
-              <i class="bi bi-twitter me-1"></i>Twitter
-            </span>
-          </a>
-          <br>
-          <a href="#" class="d-inline-block mb-3">
+          <?php
+          if ($contact_r['tw'] != '') {
+            echo <<<data
+                <a href="$contact_r[tw]" class="d-inline-block mb-3"> 
+                  <span class="badge bg-light text-dark fs-6 p-2">
+                    <i class="bi bi-twitter me-1"></i>Twitter
+                  </span>
+                 </a>
+                 </br>
+                data;
+          }
+          ?>
+
+          <a href="<?php echo $contact_r['fb'] ?>" class="d-inline-block mb-3">
             <span class="badge bg-light text-dark fs-6 p-2">
               <i class="bi bi-facebook me-1"></i>Facebook
             </span>
           </a>
           <br>
-          <a href="#" class="d-inline-block mb-3">
+          <a href="<?php echo $contact_r['insta'] ?>" class="d-inline-block mb-3">
             <span class="badge bg-light text-dark fs-6 p-2">
               <i class="bi bi-instagram me-1"></i>Instagram
             </span>
