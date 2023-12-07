@@ -75,18 +75,30 @@
 
                     <!-- Follow us -->
                     <h5 class=mt-4>Follow Us</h5>
-                    <a href="#" class="d-inline-block mb-3 text-dark fs-4 me-2">
-                        <i class="bi bi-twitter me-1"></i>
+                    <?php
+                    if ($contact_r['tw'] != '') {
+                        echo <<<data
+                        <a href="$contact_r[tw]" class="d-inline-block mb-3"> 
+                            <span class="badge bg-light text-dark fs-6 p-2">
+                                <i class="bi bi-twitter me-1"></i>Twitter
+                            </span>
+                        </a>
+                 </br>
+                data;
+                    }
+                    ?>
+                    <a href="<?php echo $contact_r['fb'] ?>" class="d-inline-block mb-3">
+                        <span class="badge bg-light text-dark fs-6 p-2">
+                            <i class="bi bi-facebook me-1"></i>Facebook
+                        </span>
                     </a>
-
-                    <a href="#" class="d-inline-block mb-3 text-dark fs-4 me-2">
-
-                        <i class="bi bi-facebook me-1"></i>
+                    <br>
+                    <a href="<?php echo $contact_r['insta'] ?>" class="d-inline-block mb-3">
+                        <span class="badge bg-light text-dark fs-6 p-2">
+                            <i class="bi bi-instagram me-1"></i>Instagram
+                        </span>
                     </a>
-                    <a href="#" class="d-inline-block mb-3 text-dark fs-4">
-
-                        <i class="bi bi-instagram me-1"></i>
-                    </a>
+                    <br>
                 </div>
             </div>
             <!-- Right section -->
