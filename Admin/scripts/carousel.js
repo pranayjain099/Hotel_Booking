@@ -1,31 +1,29 @@
 
 let carousel_s_form = document.getElementById('carousel_s_form');
-let member_name_input = document.getElementById('member_name_input');
-let member_picture_input = document.getElementById('member_picture_input');
+
+let carousel_picture_input = document.getElementById('carousel_picture_input');
 
 
-// Management Team section
 carousel_s_form.addEventListener('submit', function (e) {
     e.preventDefault();
-    add_member();
+    add_image();
 });
 
-// Add member  
-function add_member() {
+// Add image  
+function add_image() {
 
     let data = new FormData();
-    data.append('name', member_name_input.value);
-    data.append('picture', member_picture_input.files[0]);
-    data.append('add_member', '');
+
+    data.append('picture', carousel_picture_input.files[0]);
+    data.append('add_image', '');
 
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "ajax/settings_crud.php", true);
+    xhr.open("POST", "ajax/carousel_crud.php", true);
 
     xhr.onload = function () {
 
-
         // to hide modal
-        var myModal = document.getElementById('team-s');
+        var myModal = document.getElementById('carousel-s');
         var modal = bootstrap.Modal.getInstance(myModal);
         modal.hide();
 
@@ -37,10 +35,9 @@ function add_member() {
         } else if (this.responseText == 'update_failed') {
             alert('error', 'Image upload failed , Server down ');
         } else {
-            alert('success', 'New member added');
-            member_name_input.value = '';
-            member_picture_input.value = '';
-            get_members();
+            alert('success', 'New Image added');
+            carousel_picture_input.value = '';
+            get_carousel();
         }
     }
 
@@ -48,8 +45,8 @@ function add_member() {
 
 }
 
-// Get  member
-function get_members() {
+// Get  Carousel
+function get_carousel() {
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "ajax/settings_crud.php", true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -57,9 +54,9 @@ function get_members() {
     xhr.onload = function () {
         document.getElementById('team-data').innerHTML = this.responseText;
     }
-    xhr.send('get_members');
+    xhr.send('get_carousel');
 }
-
+// remove image
 function rem_member(val) {
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "ajax/settings_crud.php", true);
@@ -68,7 +65,7 @@ function rem_member(val) {
     xhr.onload = function () {
         if (this.responseText == 1) {
             alert('success', 'Member removed!');
-            get_members();
+            get_carousel();
         } else {
             alert('error', 'Server Down! ');
         }
@@ -77,7 +74,5 @@ function rem_member(val) {
 }
 // when we load window then this function will be called
 window.onload = function () {
-    get_general();
-    get_contacts();
-    get_members();
+    get_carousel();
 }

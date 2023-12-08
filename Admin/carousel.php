@@ -54,21 +54,17 @@ session_regenerate_id(true);
                                 </div>
                                 <!-- Modal Body -->
                                 <div class="modal-body">
-                                    <div class="mb-3">
-                                        <label class="form-label fw-bold">Name</label>
-                                        <input type="text" name="member_name" id="member_name_input"
-                                            class="form-control shadow-none" required>
-                                    </div>
+
                                     <div class="mb-3">
                                         <label class="form-label fw-bold">Picture</label>
-                                        <input type="file" name="member_picture" id="member_picture_input"
+                                        <input type="file" name="carousel_picture" id="carousel_picture_input"
                                             accept=".jpg, .png, .webp, .jpeg" class="form-control shadow-none" required>
                                     </div>
                                 </div>
 
                                 <!-- When we click on edit and change the site tile and about but we changed and do cancel then data gets saved but we dont want this so here we put onlick and waha ki value ko databse mein jo hai whi set krdi -->
                                 <div class="modal-footer">
-                                    <button type="button" onclick="member_name.value='',member_picture.value='' "
+                                    <button type="button" onclick="carousel_picture.value='' "
                                         class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
                                     <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
                                 </div>
