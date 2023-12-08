@@ -46,11 +46,11 @@ session_regenerate_id(true);
                 <div class="modal fade" id="carousel-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <form id="team_s_form">
+                        <form id="carousel_s_form">
                             <div class="modal-content">
                                 <!-- Modal head -->
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Add Team Member</h5>
+                                    <h5 class="modal-title">Add Image</h5>
                                 </div>
                                 <!-- Modal Body -->
                                 <div class="modal-body">
@@ -82,7 +82,7 @@ session_regenerate_id(true);
     </div>
 
     <?php require('include/script.php'); ?>
-    <script src="scripts/settings.js"></script>
+    <script src="scripts/carousel.js"></script>
 
 
 </body>
