@@ -23,18 +23,19 @@
 
   <!-- Carausel -->
   <div class="container-fluid px-lg-4 mt-4">
-
     <div class="swiper swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="image\Slider\1.jpg" class="w-100 d-block" />
-        </div>
-        <div class="swiper-slide">
-          <img src="image\Slider\2.jpg" class="w-100 d-block" />
-        </div>
-        <div class="swiper-slide">
-          <img src="image\Slider\3.jpg" class="w-100 d-block" />
-        </div>
+        <?php
+        $res = selectALL('carousel');
+        while ($row = mysqli_fetch_assoc($res)) {
+          $path = CAROUSEL_IMG_PATH1;
+          echo <<<data
+            <div class="swiper-slide">
+              <img src="$path$row[image]" class="w-100 d-block" />
+            </div>
+        data;
+        }
+        ?>
       </div>
     </div>
   </div>

@@ -5,6 +5,7 @@
 define('SITE_URL', 'http://127.0.0.1/Hotel_Booking/');
 define('ABOUT_IMG_PATH', '../image/about/');
 define('CAROUSEL_IMG_PATH', '../image/carousel/');
+define('CAROUSEL_IMG_PATH1', '../Hotel_Booking/image/carousel/');
 
 // backend upload process needs this data
 define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Hotel_Booking/image/');
