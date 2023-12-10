@@ -97,34 +97,52 @@
             <!-- Right section -->
             <div class="col-lg-6 col-md-4  px-4">
                 <div class="bg-white rounded p-4 shadow">
-                    <form>
+                    <form method="post">
+                        <!-- Send a message  -->
                         <h5>Send a message</h5>
                         <div class="mt-3">
                             <label class="form-label" style="font-weight:550;">Name
                             </label>
-                            <input type="text" class="form-control shadow-none">
+                            <input name="name" required type="text" class="form-control shadow-none">
                         </div>
                         <div class="mt-3">
                             <label class="form-label" style="font-weight:550;">Email
                             </label>
-                            <input type="email" class="form-control shadow-none">
+                            <input name="email" required type="email" class="form-control shadow-none">
                         </div>
                         <div class="mt-3">
                             <label class="form-label" style="font-weight:550;">Subject
                             </label>
-                            <input type="text" class="form-control shadow-none">
+                            <input name="subject" required type="text" class="form-control shadow-none">
                         </div>
                         <div class="mt-3">
                             <label class="form-label" style="font-weight:550;">Message
                             </label>
-                            <textarea class="form-control shadow-none" rows="3" style="resize:none;"></textarea>
+                            <textarea name="message" required class="form-control shadow-none" rows="3"
+                                style="resize:none;"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-white custom-bg mt-3"> Send </button>
+                        <button type="submit" name="send" class="btn btn-white custom-bg mt-3"> Send </button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <?php
+    if (isset($_POST['send'])) {
+        $frm_data = filteration($_POST);
+        $q = "INSERT INTO `user_queries`(`name`, `email`, `subject`, `message`) VALUES (?,?,?,?)";
+        $values = [$frm_data['name'], $frm_data['email'], $frm_data['subject'], $frm_data['message']];
+
+        $res = insert($q, $values, 'ssss');
+        if ($res == 1) {
+            alert('success', 'Mail sent!');
+        } else {
+            alert('error', 'Server Down! Try again later.');
+        }
+
+    }
+    ?>
     <!-- including Footer -->
     <?php
     require('include/footer.php')
