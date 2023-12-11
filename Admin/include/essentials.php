@@ -37,7 +37,7 @@ function redirect($url)
 function alert($type, $msg)
 {
     // if suncess login then alert-success class else alert-danger class , stored that in varibale and then added in class.
-    $bs_class = ($type == "success") ? "alert-sucess" : "alert-danger";
+    $bs_class = ($type == "success") ? "alert-success" : "alert-danger";
     // this is hero doc method of printing we have taken bootstrap dismissble alert.
     // no extra space , proper indent alert at start and end.
     echo <<<alert
