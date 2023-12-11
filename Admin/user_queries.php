@@ -30,6 +30,43 @@ session_regenerate_id(true);
 
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
+                        <div class="table-responsive-md" style="height: 450px; overflow-y: scroll;">
+                            <table class="table table-hover border">
+                                <thead class="sticky-top">
+                                    <tr class="bg-dark text-light">
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col" width="20%">Subject</th>
+                                        <th scope="col" width="30%">Message</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $q = "SELECT * FROM `user_queries` ORDER BY `sr_no` DESC";
+
+                                    $data = mysqli_query($con, $q);
+                                    $i = 1;
+
+                                    while ($row = mysqli_fetch_assoc($data)) {
+                                        echo <<<query
+                                            <tr>
+                                                <td>$i</td>
+                                                <td>$row[name]</td>
+                                                <td>$row[email]</td>
+                                                <td>$row[subject]</td>
+                                                <td>$row[message]</td>
+                                                <td>$row[date]</td>
+                                            </tr>
+                                            query;
+                                        $i++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
 
                     </div>
                 </div>
