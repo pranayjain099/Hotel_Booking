@@ -8,7 +8,13 @@ if (isset($_GET['seen'])) {
     $frm_data = filteration($_GET);
 
     if ($frm_data['seen'] == 'all') {
-
+        $q = "UPDATE `user_queries` SET `seen`= ?";
+        $values = [1];
+        if (update($q, $values, 'i')) {
+            alert('success', 'Marked all as read');
+        } else {
+            alert('error', 'Operation Failed');
+        }
     } else {
         $q = "UPDATE `user_queries` SET `seen`= ? WHERE `sr_no` = ?";
         $values = [1, $frm_data['seen']];
@@ -25,7 +31,12 @@ if (isset($_GET['del'])) {
     $frm_data = filteration($_GET);
 
     if ($frm_data['del'] == 'all') {
-
+        $q = "DELETE FROM `user_queries`";
+        if (mysqli_query($con, $q)) {
+            alert('success', 'All Data Deleted!');
+        } else {
+            alert('error', 'Operation Failed');
+        }
     } else {
         $q = "DELETE FROM `user_queries` WHERE `sr_no` = ?";
         $values = [$frm_data['del']];
@@ -63,9 +74,13 @@ if (isset($_GET['del'])) {
 
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
-
+                        <!--Mark all read  -->
                         <div class="text-end mb-4">
-
+                            <a href="?seen=all" class="btn btn-dark rounded-pill shadow-none btn-sm"><i
+                                    class="bi bi-check-all"></i> Mark all read</a>
+                            <!-- Delete all  -->
+                            <a href="?del=all" class="btn btn-danger rounded-pill shadow-none btn-sm"><i
+                                    class="bi bi-trash"></i> Delete all</a>
                         </div>
                         <div class="table-responsive-md" style="height: 450px; overflow-y: scroll;">
                             <table class="table table-hover border">
