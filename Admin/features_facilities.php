@@ -75,6 +75,13 @@ if (isset($_GET['del'])) {
                 <!-- Table -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="card-title m-0">Features</h5>
+                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#feature-s">
+                                <i class="bi bi-plus-square"></i> Add
+                            </button>
+                        </div>
                         <div class="table-responsive-md" style="height: 450px; overflow-y: scroll;">
                             <table class="table table-hover border">
                                 <thead class="sticky-top">
@@ -127,9 +134,35 @@ if (isset($_GET['del'])) {
         </div>
     </div>
 
+    <!-- Feature Modal -->
+    <div class="modal fade" id="feature-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="feature_s_form">
+                <div class="modal-content">
+                    <!-- Modal head -->
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Feature</h5>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Name</label>
+                            <input type="text" name="feature_name" class="form-control shadow-none" required>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="reset" class="btn text-secondary shadow-none"
+                            data-bs-dismiss="modal">CANCEL</button>
+                        <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
     <?php require('include/script.php'); ?>
-
-
 </body>
 
 </html>
