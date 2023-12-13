@@ -185,6 +185,10 @@ if (isset($_GET['del'])) {
             }
             xhr.send('get_features');
         }
+
+        window.onload = function () {
+            get_features();
+        }
     </script>
 </body>
 
