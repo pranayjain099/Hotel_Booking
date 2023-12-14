@@ -186,6 +186,25 @@ if (isset($_GET['del'])) {
             xhr.send('get_features');
         }
 
+        // remove member
+        function rem_feature(val) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/features_facilities.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                if (this.responseText == 1) {
+                    alert('success', 'Feature removed!');
+                    get_features();
+                } else if (this.responseText == 'room_added') {
+                    alert('error', 'Cannot remove as this feture is added in room');
+                } else {
+                    alert('error', 'Server Down! ');
+                }
+            }
+            xhr.send('rem_feature=' + val);
+        }
+
         window.onload = function () {
             get_features();
         }
