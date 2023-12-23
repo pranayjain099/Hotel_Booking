@@ -168,29 +168,33 @@ if (isset($_GET['del'])) {
     <div class="modal fade" id="facility-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form id="team_s_form">
+            <form id="facility_s_form">
                 <div class="modal-content">
                     <!-- Modal head -->
                     <div class="modal-header">
-                        <h5 class="modal-title">Add Team Member</h5>
+                        <h5 class="modal-title">Add Facility</h5>
                     </div>
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label fw-bold">Name</label>
-                            <input type="text" name="member_name" id="member_name_input"
-                                class="form-control shadow-none" required>
+                            <input type="text" name="facility_name" class="form-control shadow-none" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Picture</label>
-                            <input type="file" name="member_picture" id="member_picture_input"
-                                accept=".jpg, .png, .webp, .jpeg" class="form-control shadow-none" required>
+                            <label class="form-label fw-bold">Icon</label>
+                            <input type="file" name="facility_icon" accept=".svg" class="form-control shadow-none"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea name="facility_desc" class="form-control shadow-none" rows="3"></textarea>
                         </div>
                     </div>
 
+
                     <div class="modal-footer">
-                        <button type="button" onclick="member_name.value='',member_picture.value='' "
-                            class="btn text-secondary shadow-none" data-bs-dismiss="modal">CANCEL</button>
+                        <button type="reset" class="btn text-secondary shadow-none"
+                            data-bs-dismiss="modal">CANCEL</button>
                         <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
                     </div>
                 </div>
@@ -205,6 +209,7 @@ if (isset($_GET['del'])) {
     <script>
 
         let feature_s_form = document.getElementById('feature_s_form');
+        let facility_s_form = document.getElementById('facility_s_form');
 
         // Feature section
         feature_s_form.addEventListener('submit', function (e) {
@@ -273,6 +278,46 @@ if (isset($_GET['del'])) {
             xhr.send('rem_feature=' + val);
         }
 
+        // Facility section
+        facility_s_form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            add_facility();
+        });
+
+        // Add Facility
+        function add_facility() {
+
+            let data = new FormData();
+            data.append('name', facility_s_form.elements['facility_name'].value);
+            data.append('icon', facility_s_form.elements['facility_icon'].files[0]);
+            data.append('desc', facility_s_form.elements['facility_desc'].value);
+            data.append('add_facility', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/features_facilities.php", true);
+
+            xhr.onload = function () {
+
+                // to hide modal
+                var myModal = document.getElementById('facility-s');
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+
+                if (this.responseText == 'inv_img') {
+                    alert('error', 'only SVG Images are allowed');
+                    get_general();
+                } else if (this.responseText == 'inv_size') {
+                    alert('error', 'Image shouldbe less than 1MB');
+                } else if (this.responseText == 'update_failed') {
+                    alert('error', 'Image upload failed , Server down ');
+                } else {
+                    alert('success', 'New facility added');
+                    facility_s_form.reset();
+                    // get_members();
+                }
+            }
+            xhr.send(data);
+        }
         window.onload = function () {
             get_features();
         }

@@ -6,12 +6,16 @@ define('SITE_URL', 'http://127.0.0.1/Hotel_Booking/');
 define('ABOUT_IMG_PATH', '../image/about/');
 define('CAROUSEL_IMG_PATH', '../image/carousel/');
 define('CAROUSEL_IMG_PATH1', '../Hotel_Booking/image/carousel/');
+define('FEATURES_IMG_PATH', '../image/Features/');
+define('FEATURES_IMG_PATH1', '../Hotel_Booking/image/Features/');
+
 
 // backend upload process needs this data
 define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Hotel_Booking/image/');
 
 define('ABOUT_FOLDER', 'about/');
 define('CAROUSEL_FOLDER', 'carousel/');
+define('FEATURES_FOLDER', 'Features/');
 
 //  Check if admin is logged in
 
@@ -48,6 +52,7 @@ function alert($type, $msg)
             alert;
 }
 
+// upload image
 function uploadImage($image, $folder)
 {
     $valid_mime = ['image/jpeg', 'image/png', 'image/webp'];
@@ -79,6 +84,29 @@ function deleteImage($image, $folder)
         return true;
     } else {
         return false;
+    }
+}
+
+// upload SVG Images
+function uploadSVGImage($image, $folder)
+{
+    $valid_mime = ['image/svg+xml'];  // svg+xml is the MIME type of svg image
+    $img_mime = $image['type'];
+
+    if (!in_array($img_mime, $valid_mime)) {
+        return 'inv_img';  // invalid image mine or format
+    } else if (($image['size'] / (1024 * 1024)) > 1) {
+        return 'inv_size';  // invalid size greater then 1mb
+    } else {
+        // extracting extension of image
+        $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+        $rname = 'IMG_' . random_int(11111, 99999) . ".$ext";
+        $img_path = UPLOAD_IMAGE_PATH . $folder . $rname;
+        if (move_uploaded_file($image['tmp_name'], $img_path)) {
+            return $rname;
+        } else {
+            return 'update_failed';
+        }
     }
 }
 
