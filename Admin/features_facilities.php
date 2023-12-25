@@ -117,7 +117,7 @@ if (isset($_GET['del'])) {
                                         <th scope="col">#</th>
                                         <th scope="col">Icon</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Description</th>
+                                        <th scope="col" width="30%">Description</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -259,7 +259,7 @@ if (isset($_GET['del'])) {
             xhr.send('get_features');
         }
 
-        // remove member
+        // remove feature
         function rem_feature(val) {
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "ajax/features_facilities.php", true);
@@ -330,9 +330,30 @@ if (isset($_GET['del'])) {
             }
             xhr.send('get_facilities');
         }
+
+        // remove Facility
+        function rem_facility(val) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/features_facilities.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                if (this.responseText == 1) {
+                    alert('success', 'Facility removed!');
+                    get_facilities();
+                } else if (this.responseText == 'room_added') {
+                    alert('error', 'Facility is added in room');
+                } else {
+                    alert('error', 'Server Down! ');
+                }
+            }
+            xhr.send('rem_facility=' + val);
+        }
+
         window.onload = function () {
             get_features();
             get_facilities();
+
         }
     </script>
 </body>

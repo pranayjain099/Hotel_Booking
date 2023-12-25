@@ -93,9 +93,9 @@ if (isset($_POST['get_facilities'])) {
 if (isset($_POST['rem_facility'])) {
 
     $frm_data = filteration($_POST);
-    $values = [$frm_data['rem_feature']];
+    $values = [$frm_data['rem_facility']];
 
-    $q = "DELETE FROM `features` WHERE `id`=?";
+    $q = "DELETE FROM `facilities` WHERE `id`=?";
     $res = delete($q, $values, 'i');
     echo $res;
 
