@@ -7,8 +7,8 @@ define('ABOUT_IMG_PATH', '../image/about/');
 define('CAROUSEL_IMG_PATH', '../image/carousel/');
 define('CAROUSEL_IMG_PATH1', '../Hotel_Booking/image/carousel/');
 
-define('FEATURES_IMG_PATH', '../image/Features/');
-define('FEATURES_IMG_PATH1', '../Hotel_Booking/image/Features/');
+define('FACILITIES_IMG_PATH', '../image/facilities/');
+define('FACILITIES_IMG_PATH1', '../Hotel_Booking/image/facilities/');
 
 
 // backend upload process needs this data
@@ -16,7 +16,7 @@ define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Hotel_Booking/image/')
 
 define('ABOUT_FOLDER', 'about/');
 define('CAROUSEL_FOLDER', 'carousel/');
-define('FEATURES_FOLDER', 'Features/');
+define('FACILITIES_FOLDER', 'facilities/');
 
 //  Check if admin is logged in
 
