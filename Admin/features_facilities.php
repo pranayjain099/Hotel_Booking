@@ -84,7 +84,7 @@ if (isset($_GET['del'])) {
                         </div>
                         <div class="table-responsive-md" style="height: 350px; overflow-y: scroll;">
                             <table class="table table-hover border">
-                                <thead class="sticky-top">
+                                <thead>
                                     <tr class="bg-dark text-light">
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
@@ -112,7 +112,7 @@ if (isset($_GET['del'])) {
                         </div>
                         <div class="table-responsive-md" style="height: 350px; overflow-y: scroll;">
                             <table class="table table-hover border">
-                                <thead class="sticky-top">
+                                <thead>
                                     <tr class="bg-dark text-light">
                                         <th scope="col">#</th>
                                         <th scope="col">Icon</th>
@@ -313,13 +313,26 @@ if (isset($_GET['del'])) {
                 } else {
                     alert('success', 'New facility added');
                     facility_s_form.reset();
-                    // get_members();
+                    get_facilities();
                 }
             }
             xhr.send(data);
         }
+
+        // get facilities
+        function get_facilities() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/features_facilities.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                document.getElementById('facilities-data').innerHTML = this.responseText;
+            }
+            xhr.send('get_facilities');
+        }
         window.onload = function () {
             get_features();
+            get_facilities();
         }
     </script>
 </body>

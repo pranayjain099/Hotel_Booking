@@ -6,6 +6,7 @@ define('SITE_URL', 'http://127.0.0.1/Hotel_Booking/');
 define('ABOUT_IMG_PATH', '../image/about/');
 define('CAROUSEL_IMG_PATH', '../image/carousel/');
 define('CAROUSEL_IMG_PATH1', '../Hotel_Booking/image/carousel/');
+
 define('FEATURES_IMG_PATH', '../image/Features/');
 define('FEATURES_IMG_PATH1', '../Hotel_Booking/image/Features/');
 
