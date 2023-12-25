@@ -16,10 +16,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>`;
         document.body.append(element);
-    }
-</script>
 
-<script>
+        // To automatically disappear the alert
+        setTimeout(remAlert, 1000); // call the remAlert function after 2000ms.
+    }
+
+    function remAlert() {
+        document.getElementsByClassName('alert')[0].remove();
+    }
+
     function setActive() {
         let navbar = document.getElementById('dashboard-menu');
         let a_tags = navbar.getElementsByTagName('a');
