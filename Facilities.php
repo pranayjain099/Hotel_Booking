@@ -38,66 +38,26 @@
 
     <div class="container">
         <div class="row">
+
+            <?php
+            $res = selectAll('facilities');
+            $path = FACILITIES_IMG_PATH1;
+
+            while ($row = mysqli_fetch_assoc($res)) {
+                echo <<<data
             <div class="col-lg-4 col-md-4 mb-5 px-4">
-                <div class="bg-white rounded p-4 shadow border-top border-4 border-dark pop">
+                <div class="bg-white rounded p-4 shadow    border-top border-4 border-dark pop">
                     <div class="d-flex align-items-center mb-2">
-                        <img src="image\Features\1.png" width="40px">
-                        <h5 class="m-0 ms-3">WIFI</h5>
+                        <img src="$path$row[icon]" width="40px">
+                        <h5 class="m-0 ms-3">$row[name]</h5>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quos
-                        saepe inventore possimus suscipit laudantium commodi cum, delectus rem</p>
+                    <p>$row[description]</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 mb-5 px-4">
-                <div class="bg-white rounded p-4 shadow border-top border-4 border-dark pop">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="image\Features\1.png" width="40px">
-                        <h5 class="m-0 ms-3">WIFI</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quos
-                        saepe inventore possimus suscipit laudantium commodi cum, delectus rem</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 mb-5 px-4">
-                <div class="bg-white rounded p-4 shadow border-top border-4 border-dark pop">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="image\Features\1.png" width="40px">
-                        <h5 class="m-0 ms-3">WIFI</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quos
-                        saepe inventore possimus suscipit laudantium commodi cum, delectus rem</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 mb-5 px-4">
-                <div class="bg-white rounded p-4 shadow border-top border-4 border-dark pop">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="image\Features\1.png" width="40px">
-                        <h5 class="m-0 ms-3">WIFI</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quos
-                        saepe inventore possimus suscipit laudantium commodi cum, delectus rem</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 mb-5 px-4">
-                <div class="bg-white rounded p-4 shadow border-top border-4 border-dark pop">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="image\Features\1.png" width="40px">
-                        <h5 class="m-0 ms-3">WIFI</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quos
-                        saepe inventore possimus suscipit laudantium commodi cum, delectus rem</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 mb-5 px-4">
-                <div class="bg-white rounded p-4 shadow border-top border-4 border-dark pop">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="image\Features\1.png" width="40px">
-                        <h5 class="m-0 ms-3">WIFI</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quos
-                        saepe inventore possimus suscipit laudantium commodi cum, delectus rem</p>
-                </div>
-            </div>
+            data;
+            }
+
+            ?>
         </div>
     </div>
 
