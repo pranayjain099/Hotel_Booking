@@ -113,6 +113,7 @@ adminLogin();
                                 <input type="number" min="1" name="children" class="form-control shadow-none" required>
                             </div>
 
+                            <!-- Features -->
                             <div class="col-12 mb-3">
                                 <label class="form-label fw-bold">Features</label>
                                 <div class="row">
@@ -131,46 +132,30 @@ adminLogin();
                                     ?>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                            <!-- Facilities -->
+                            <div class="col-12 mb-3">
+                                <label class="form-label fw-bold">Facilities</label>
+                                <div class="row">
+                                    <?php
+                                    $res = selectAll('facilities');
+                                    while ($opt = mysqli_fetch_assoc($res)) {
+                                        echo "
+                                            <div class = 'col-md-3'>
+                                                <label>
+                                                    <input type = 'checkbox' name = 'feaatures' value='$opt[id]' class='form-check-input shadow-none'>
+                                                    $opt[name]
+                                                </label>
+                                            </div>
+                                        ";
+                                    }
+                                    ?>
+                                </div>
+                            </div>
 
-
-                    <div class="modal-footer">
-                        <button type="reset" class="btn text-secondary shadow-none"
-                            data-bs-dismiss="modal">CANCEL</button>
-                        <button type="submit" class="btn custom-bg text-white shadow-none">SUBMIT</button>
-                    </div>
-                </div>
-            </form>
-
-        </div>
-    </div>
-
-    <!-- Facility modal -->
-
-    <div class="modal fade" id="facility-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <form id="facility_s_form">
-                <div class="modal-content">
-                    <!-- Modal head -->
-                    <div class="modal-header">
-                        <h5 class="modal-title">Add Facility</h5>
-                    </div>
-                    <!-- Modal Body -->
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Name</label>
-                            <input type="text" name="facility_name" class="form-control shadow-none" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Icon</label>
-                            <input type="file" name="facility_icon" accept=".svg" class="form-control shadow-none"
-                                required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea name="facility_desc" class="form-control shadow-none" rows="3"></textarea>
+                            <div class="col-12 mb-3">
+                                <label form="form-label fw-bold">Description</label>
+                                <textarea name="desc" rows="4" class="form-control shadow-none" required></textarea>
+                            </div>
                         </div>
                     </div>
 
@@ -188,7 +173,9 @@ adminLogin();
 
 
     <?php require('include/script.php'); ?>
-    <script src="scripts/features_facilities.js"></script>
+    <script>
+
+    </script>
 </body>
 
 </html>
