@@ -66,11 +66,12 @@ if (isset($_POST['get_all_rooms'])) {
 
     while ($row = mysqli_fetch_assoc($res)) {
 
+
         $data .= "
             <tr class = 'align-middle'>
                 <td>$i</td>
                 <td>$row[name]</td>
-                <td>$row[area]</td>
+                <td>$row[area] sq. ft.</td>
                 <td>
                     <span class='badge rounded-pill bg-light text-dark'>
                         Adult:$row[adult]
@@ -79,9 +80,9 @@ if (isset($_POST['get_all_rooms'])) {
                         Adult:$row[children]
                     </span>
                 </td>
-                <td>$row[price]</td>
+                <td>₹. $row[price]</td>
                 <td>$row[quantity]</td>
-                <td>Status</td>
+                <td>$status</td>
                 <td>Buttons</td>
             </tr>        
         ";
