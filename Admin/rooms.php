@@ -121,9 +121,9 @@ adminLogin();
                                     $res = selectAll('features');
                                     while ($opt = mysqli_fetch_assoc($res)) {
                                         echo "
-                                            <div class = 'col-md-3'>
+                                            <div class = 'col-md-3 mb-1'>
                                                 <label>
-                                                    <input type = 'checkbox' name = 'feaatures' value='$opt[id]' class='form-check-input shadow-none'>
+                                                    <input type = 'checkbox' name = 'features' value='$opt[id]' class='form-check-inpu shadow-none'>
                                                     $opt[name]
                                                 </label>
                                             </div>
@@ -140,9 +140,9 @@ adminLogin();
                                     $res = selectAll('facilities');
                                     while ($opt = mysqli_fetch_assoc($res)) {
                                         echo "
-                                            <div class = 'col-md-3'>
+                                            <div class = 'col-md-3 mb-1'>
                                                 <label>
-                                                    <input type = 'checkbox' name = 'feaatures' value='$opt[id]' class='form-check-input shadow-none'>
+                                                    <input type = 'checkbox' name = 'facilities' value='$opt[id]' class='form-check-input shadow-none'>
                                                     $opt[name]
                                                 </label>
                                             </div>
