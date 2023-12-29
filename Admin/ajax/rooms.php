@@ -66,6 +66,11 @@ if (isset($_POST['get_all_rooms'])) {
 
     while ($row = mysqli_fetch_assoc($res)) {
 
+        if ($row['status'] == 1) {
+            $status = "<button>active</button>";
+        } else {
+            $status = "<button>inactive</button>";
+        }
 
         $data .= "
             <tr class = 'align-middle'>
