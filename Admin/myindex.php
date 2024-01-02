@@ -55,25 +55,16 @@ if ((isset($_SESSION["adminLogin"]) && $_SESSION["adminLogin"] == true)) {
     </div>
 
     <?php
-    // agar post method se koi data submit hua hai and usme login naam ka index hai , then first filter the data 
     if (isset($_POST['login'])) {
 
-        // Filtering the post data 
-        $frm_data = filteration($_POST); //and recieved data is stored in new varibale.
-    
+        $frm_data = filteration($_POST);
 
-        // Table name or column names are written in backtick (` `) and values are written in single quote (' ').
-    
-        // what is "?" = we are going to use prepared statement here
         $query = "SELECT * FROM `admin_cred` WHERE `admin_name`=? AND `admin_pass`=?";
 
-        // contains adminname and passowrd
         $values = [$frm_data['admin_name'], $frm_data['admin_pass']];
 
-        // datatype of values 
-        $datatype = "ss"; // ss means string(for admin name) string (for admin password).
-    
-        //calling the function
+        $datatype = "ss";
+
         $res = select($query, $values, $datatype);
 
         // we recieved data in $res now fetch num_rows if it is equal to 1.

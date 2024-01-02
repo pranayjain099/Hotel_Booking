@@ -128,6 +128,64 @@ if (isset($_POST['get_room'])) {
 
 }
 
+if (isset($_POST['edit_room'])) {
+    $features = filteration(json_decode($_POST['features']));
+    $facilities = filteration(json_decode($_POST['facilities']));
+
+    $frm_data = filteration($_POST);
+    $flag = 0;
+
+    $q1 = "UPDATE `rooms` SET `name`= ? ,`area`= ? ,`price`= ? ,`quantity`= ? ,`adult`= ? ,`children`= ? ,`description`= ?  WHERE `id`= ? ";
+
+    $values = [$frm_data['name'], $frm_data['area'], $frm_data['price'], $frm_data['quantity'], $frm_data['adult'], $frm_data['children'], $frm_data['desc'], $frm_data['room_id']];
+
+    if (update($q1, $values, 'siiiiisi')) {
+        $flag = 1;
+    }
+
+    $del_features = delete("DELETE FROM `room_features` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
+    $del_facilities = delete("DELETE FROM `room_facilities` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
+
+    if (!($del_features && $del_facilities)) {
+        $flag = 0;
+    }
+
+    $q2 = "INSERT INTO `room_facilities`(`room_id`, `facilities_id`) VALUES (?,?)";
+
+    if ($stmt = mysqli_prepare($con, $q2)) {
+        foreach ($facilities as $f) {
+            mysqli_stmt_bind_param($stmt, 'ii', $frm_data['room_id'], $f);
+            mysqli_stmt_execute($stmt);
+        }
+        $flag = 1;
+        mysqli_stmt_close($stmt);
+    } else {
+        $flag = 0;
+        die('query cannot be prepared - insert');
+    }
+
+    $q3 = "INSERT INTO `room_features`(`room_id`, `features_id`) VALUES (?,?)";
+
+    if ($stmt = mysqli_prepare($con, $q3)) {
+        foreach ($features as $f) {
+            mysqli_stmt_bind_param($stmt, 'ii', $frm_data['room_id'], $f);
+            mysqli_stmt_execute($stmt);
+        }
+        $flag = 1;
+        mysqli_stmt_close($stmt);
+    } else {
+        $flag = 0;
+        die('query cannot be prepared - insert');
+    }
+
+    if ($flag) {
+        echo 1;
+    } else {
+        echo 0;
+    }
+
+}
+
 if (isset($_POST['toggle_status'])) {
 
     $frm_data = filteration($_POST);

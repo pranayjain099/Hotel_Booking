@@ -41,10 +41,17 @@ if (isset($_POST['rem_feature'])) {
     $frm_data = filteration($_POST);
     $values = [$frm_data['rem_feature']];
 
-    $q = "DELETE FROM `features` WHERE `id`=?";
-    $res = delete($q, $values, 'i');
-    echo $res;
+    // If feature is aready present in any room then it cannot be removed.
 
+    $check_q = select('SELECT * FROM `room_features` WHERE `features_id`=?', [$frm_data['rem_feature']], 'i');
+
+    if (mysqli_num_rows($check_q) == 0) {
+        $q = "DELETE FROM `features` WHERE `id`=?";
+        $res = delete($q, $values, 'i');
+        echo $res;
+    } else {
+        echo 'room_added';
+    }
 }
 
 // Facility
