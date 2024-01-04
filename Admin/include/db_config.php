@@ -1,7 +1,7 @@
 <?php
 // Connecting to the Database
-$hname = 'localhost'; // Hostname
-$uname = 'root'; // username
+$hname = 'localhost';
+$uname = 'root';
 $pass = "";
 $db = '7_star';
 
@@ -44,14 +44,14 @@ function selectAll($table)
 // Takes three parameters sql query , values and datatype.
 function select($sql, $values, $datatypes)
 {
-    // using con varibale globally
+    // We have created 'con' variable on the top and to use that variable inside function we need to declare it globally.
     $con = $GLOBALS['con'];
 
     // if query gets prepared then store it in varibale else die.
     // stmt is variable defined by us you can give any name.
     if ($stmt = mysqli_prepare($con, $sql)) {
-        // then we will bind the parameters
-        // now to send multiple values dynamically in mysqli_bind_param() we used splat operator (3 dots before variable).
+
+        // now to send multiple values dynamically in mysqli_bind_param() we used splat operator (3 dots before variable).you can see $values is a array.
         // mysqli_stmta_bind_param($stmt, $datatypes, $a,$b,$c); instead of this 
         // do this
         mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
@@ -63,7 +63,7 @@ function select($sql, $values, $datatypes)
             mysqli_stmt_close($stmt); // closing the preapred statement
             return $res;
         } else {
-            mysqli_stmt_close($stmt);
+            mysqli_stmt_close($stmt); // closing the preapred statement
             die("Query cannot be executed - select function");
         }
     } else {

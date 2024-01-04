@@ -19,7 +19,7 @@ general_s_form.addEventListener('submit', function (e) {
 })
 
 
-// Get General
+// Get General = will fetch data from database and update the page
 function get_general() {
     let site_title = document.getElementById('site_title');
     let site_about = document.getElementById('site_about');
@@ -30,14 +30,7 @@ function get_general() {
     xhr.open("POST", "ajax/settings_crud.php", true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');  // we have to apply this header when we send data thorugh post.
 
-    // data recieved here now
-
-    // xhr.onreadystatechange = function{
-    //     if(this.readyState==4 && this.status==200){
-
-    //     }
-    // }
-    // you can write like this but to write this in short there is a way
+    // data recieved here froms get_general (settings_crud (Ajax))
 
     xhr.onload = function () {
         // JSON.parse converts json data into js object.
@@ -63,8 +56,7 @@ function get_general() {
     xhr.send('get_general');
 }
 
-
-// Update General
+// Update General = will send data to database and update the database with new data 
 function update_general(site_title_val, site_about_val) {
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "ajax/settings_crud.php", true);

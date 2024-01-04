@@ -6,7 +6,7 @@ require('include\essentials.php');
 // Starting the session
 session_start();
 
-// Condittion On pressing back button when we are on admin panel
+// Condittion On pressing back button , if already these session variabales are set means you are logged in and after login of you try to visit login page then you will be redirected to dashboard page.
 if ((isset($_SESSION["adminLogin"]) && $_SESSION["adminLogin"] == true)) {
     redirect("dashboard.php");
 }
@@ -59,8 +59,8 @@ if ((isset($_SESSION["adminLogin"]) && $_SESSION["adminLogin"] == true)) {
 
         $frm_data = filteration($_POST);
 
-        $query = "SELECT * FROM `admin_cred` WHERE `admin_name`=? AND `admin_pass`=?";
-
+        $query = "SELECT * FROM `admin_cred` WHERE `admin_name`=? AND `admin_pass`=?"; // prepare stmt
+    
         $values = [$frm_data['admin_name'], $frm_data['admin_pass']];
 
         $datatype = "ss";
@@ -68,7 +68,7 @@ if ((isset($_SESSION["adminLogin"]) && $_SESSION["adminLogin"] == true)) {
         $res = select($query, $values, $datatype);
 
         // we recieved data in $res now fetch num_rows if it is equal to 1.
-        if ($res->num_rows == 1) {
+        if (mysqli_num_rows($res) == 1) {
 
             // fetching the data of that row and storing in variable.
             $row = mysqli_fetch_assoc($res);
