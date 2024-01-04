@@ -114,7 +114,9 @@ function get_contacts() {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function () {
+        // Converted the json data into js object.
         contacts_data = JSON.parse(this.responseText);
+        // now contacts_data contains both key and value but we just want value in proper order.
         contacts_data = Object.values(contacts_data);
 
         for (i = 0; i < contacts_p_id.length; i++) {

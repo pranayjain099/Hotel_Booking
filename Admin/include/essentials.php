@@ -27,7 +27,6 @@ function adminLogin()
     if (!(isset($_SESSION["adminLogin"]) && $_SESSION["adminLogin"] == true)) {
         redirect("myindex.php");
     }
-    session_regenerate_id(true);
 }
 
 // Redirect funtion = It will take url as arguent and this function will redirect us to that url.
