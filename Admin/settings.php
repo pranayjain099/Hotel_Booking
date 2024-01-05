@@ -152,7 +152,7 @@ session_regenerate_id(true);
                                     <div class="mb-4">
                                         <div class="mb-4">
                                             <h6 class="card-subtitle mb-1 fw-bold">iFrame</h6>
-                                            <iframe id="iframe" class="border p-2 w-100" lodaing="lazy"></iframe>
+                                            <iframe id="iframe" class="border p-2 w-100" loading="lazy"></iframe>
                                         </div>
                                     </div>
                                 </div>

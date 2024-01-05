@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col-lg-4 p-4">
             <div class="h-font fw-bold fs-3 mb-2">7Star</div>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum amet blanditiis voluptatibus dolorum id
-                nobis aut molestiae quas! Officia provident repellendus sapiente quod, maiores aliquid corrupti aperiam
-                porro voluptatibus doloribus.</p>
+            <p>Welcome to our amazing hotel . It&#039;s a really premium place with super comfy rooms, great food, and
+                awesome service. We&#039;re all about making your stay special, giving you the best time and memories to
+                cherish. Come experience the ultimate lux.</p>
         </div>
         <div class="col-lg-4 p-4">
             <h5 class="mb-3">Links</h5>

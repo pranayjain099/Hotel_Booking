@@ -87,7 +87,7 @@
                     <div class="row g-0 p-3 align-item-center">
                         <!-- Image -->
                         <div class="col-md-5 mb-lg-0 mb-md-0 mb-3">
-                            <img src="image\Rooms\1.jpg" class="img-fluid rounded">
+                            <img src="image\Rooms\2.png" class="img-fluid rounded">
                         </div>
                         <!-- Simple room name column -->
                         <div class="col-md-5 px-lg-3 px-md-3 px-0">
@@ -126,7 +126,7 @@
                     <div class="row g-0 p-3 align-item-center">
                         <!-- Image -->
                         <div class="col-md-5 mb-lg-0 mb-md-0 mb-3">
-                            <img src="image\Rooms\1.jpg" class="img-fluid rounded">
+                            <img src="image\Rooms\1.png" class="img-fluid rounded">
                         </div>
                         <!-- Simple room name column -->
                         <div class="col-md-5 px-lg-3 px-md-3 px-0">
@@ -165,7 +165,7 @@
                     <div class="row g-0 p-3 align-item-center">
                         <!-- Image -->
                         <div class="col-md-5 mb-lg-0 mb-md-0 mb-3">
-                            <img src="image\Rooms\1.jpg" class="img-fluid rounded">
+                            <img src="image\Rooms\5.png" class="img-fluid rounded">
                         </div>
                         <!-- Simple room name column -->
                         <div class="col-md-5 px-lg-3 px-md-3 px-0">

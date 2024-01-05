@@ -26,6 +26,7 @@ function adminLogin()
     // agar adminlogin naam ka index set nhi hai or uski value true nhi hai 
     if (!(isset($_SESSION["adminLogin"]) && $_SESSION["adminLogin"] == true)) {
         redirect("myindex.php");
+        exit;  // to end the script here only as we ar redirected to new page so remaining script of this page should not run
     }
 }
 

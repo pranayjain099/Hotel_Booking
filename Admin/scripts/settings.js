@@ -13,7 +13,7 @@ let member_name_input = document.getElementById('member_name_input');
 let member_picture_input = document.getElementById('member_picture_input');
 
 general_s_form.addEventListener('submit', function (e) {
-    e.preventDefault(); // Will avoid page from refresh means will avoid form to submit.
+    e.preventDefault(); // It will prevent default behaviourof page which is when we click on submit page gets refreshed by this Will avoid page from refresh means will avoid form to submit.
     update_general(site_title_input.value, site_about_input.value)
 
 })
@@ -184,9 +184,9 @@ team_s_form.addEventListener('submit', function (e) {
 // Add member in Management Team 
 function add_member() {
 
-    let data = new FormData();
-    data.append('name', member_name_input.value);
-    data.append('picture', member_picture_input.files[0]);
+    let data = new FormData(); // Created object of formdata which is interface in php it helps us to send image with send function.
+    data.append('name', member_name_input.value); // appending data (key,value)
+    data.append('picture', member_picture_input.files[0]);  // .files[0] means only first image you selected will be considerd 
     data.append('add_member', '');
 
     let xhr = new XMLHttpRequest();

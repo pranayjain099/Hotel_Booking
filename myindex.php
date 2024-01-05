@@ -98,7 +98,7 @@
     <div class="row">
       <div class="col-lg-4 col-md-6 my-6 mb-4">
         <div class="card border-none shadow" style="max-width: 20rem; margin:auto;">
-          <img src="image\Rooms\1.jpg" class="card-img-top">
+          <img src="image\Rooms\2.png" class="card-img-top">
           <div class="card-body">
             <h5>Premium Room</h5>
             <h6 class="mb-4"> ₹ 4000/-</h6>
@@ -144,7 +144,7 @@
       </div>
       <div class="col-lg-4 col-md-6 my-6 mb-4">
         <div class="card border-none shadow" style="max-width: 20rem; margin:auto;">
-          <img src="image\Rooms\1.jpg" class="card-img-top">
+          <img src="image\Rooms\3.png" class="card-img-top">
           <div class="card-body">
             <h5>Premium Room</h5>
             <h6 class="mb-4"> ₹ 4000/-</h6>
@@ -190,7 +190,7 @@
       </div>
       <div class="col-lg-4 col-md-6 my-6 mb-4">
         <div class="card border-none shadow" style="max-width: 20rem; margin:auto;">
-          <img src="image\Rooms\1.jpg" class="card-img-top">
+          <img src="image\Rooms\5.png" class="card-img-top">
           <div class="card-body">
             <h5>Premium Room</h5>
             <h6 class="mb-4"> ₹ 4000/-</h6>
@@ -248,19 +248,19 @@
   <div class="container">
     <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
       <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-        <img src="image\Features\1.png" width="100px">
+        <img src="image\Features\1.svg" width="100px">
       </div>
       <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-        <img src="image\Features\1.png" width="100px">
+        <img src="image\Features\2.svg" width="100px">
       </div>
       <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-        <img src="image\Features\1.png" width="100px">
+        <img src="image\Features\6.png" width="100px">
       </div>
       <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-        <img src="image\Features\1.png" width="100px">
+        <img src="image\Features\4.svg" width="100px">
       </div>
       <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-        <img src="image\Features\1.png" width="100px">
+        <img src="image\Features\5.svg" width="100px">
       </div>
 
       <div class="col-lg-12 text-center mt-5">
