@@ -279,6 +279,35 @@ adminLogin();
         </div>
     </div>
 
+    <!-- Manage room images Modal -->
+
+    <div class="modal fade" id="room-images" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Room Name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="border-bottom border-3 pb-3 mb-3">
+                        <form id="add_image_form">
+                            <label class="form-label fw-bold">Add Image</label>
+
+                            <input type="file" name="image" accept=".jpg, .png, .webp, .jpeg"
+                                class="form-control shadow-none mb-3" required>
+
+                            <button class="btn custom-bg text-white shadow-none">ADD</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <?php require('include/script.php'); ?>
     <script>
