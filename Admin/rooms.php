@@ -38,6 +38,7 @@ adminLogin();
                                 <i class="bi bi-plus-square"></i> Add
                             </button>
                         </div>
+                        <!-- Table -->
                         <div class="table-responsive-lg" style="height: 450px; overflow-y: scroll;">
                             <table class="table table-hover border text-center">
                                 <thead>
@@ -282,12 +283,12 @@ adminLogin();
     <!-- Manage room images Modal -->
 
     <div class="modal fade" id="room-images" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        data-bs-keyboard="false" data-bs-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Room Name</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -300,9 +301,26 @@ adminLogin();
                                 class="form-control shadow-none mb-3" required>
 
                             <button class="btn custom-bg text-white shadow-none">ADD</button>
+                            <input type="hidden" name="room_id">
 
                         </form>
                     </div>
+
+                    <div class="table-responsive-lg" style="height: 350px; overflow-y: scroll;">
+                        <table class="table table-hover border text-center">
+                            <thead>
+                                <tr class="bg-dark text-light sticky-top">
+                                    <th scope="col" width="60%">Image</th>
+                                    <th scope="col">Thumb</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="room-image-data">
+
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -487,6 +505,50 @@ adminLogin();
             }
 
             xhr.send('toggle_status=' + id + '&value=' + val);
+        }
+
+        let add_image_form = document.getElementById('add_image_form');
+
+        add_image_form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            add_image();
+        })
+
+        function add_image() {
+
+            let data = new FormData();
+
+            data.append('image', add_image_form.elements['image'].files[0]);
+            data.append('room_id', add_image_form.elements['room_id'].value);
+            data.append('add_image', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/rooms.php", true);
+
+            xhr.onload = function () {
+
+                if (this.responseText == 'inv_img') {
+                    alert('error', 'only JPG,WEBP or PNG Images are allowed');
+
+                } else if (this.responseText == 'inv_size') {
+                    alert('error', 'Image shouldbe less than 2MB');
+                } else if (this.responseText == 'update_failed') {
+                    alert('error', 'Image upload failed , Server down ');
+                } else {
+                    alert('success', 'New Image added');
+                    add_image_form.reset();
+
+                }
+            }
+
+            xhr.send(data);
+
+        }
+
+        function room_images(id, rname) {
+
+            document.querySelector("#room-images .modal-title").innerText = rname;
+            add_image_form.elements['room_id'].value = id;
         }
 
         window.onload = function () {

@@ -6,6 +6,7 @@ define('SITE_URL', 'http://127.0.0.1/Hotel_Booking/');
 define('ABOUT_IMG_PATH', '../image/about/');
 define('CAROUSEL_IMG_PATH', '../image/carousel/');
 define('CAROUSEL_IMG_PATH1', '../Hotel_Booking/image/carousel/');
+define('ROOMS_IMG_PATH', '../Hotel_Booking/image/rooms/');
 
 define('FACILITIES_IMG_PATH', '../image/facilities/');
 define('FACILITIES_IMG_PATH1', '../Hotel_Booking/image/facilities/');
@@ -17,6 +18,7 @@ define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Hotel_Booking/image/')
 define('ABOUT_FOLDER', 'about/');
 define('CAROUSEL_FOLDER', 'carousel/');
 define('FACILITIES_FOLDER', 'facilities/');
+define('ROOMS_FOLDER', 'rooms/');
 
 //  Check if admin is logged in
 
