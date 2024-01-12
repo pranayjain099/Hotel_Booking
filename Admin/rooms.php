@@ -287,12 +287,16 @@ adminLogin();
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
+
                     <h5 class="modal-title">Room Name</h5>
                     <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div id="image-alert">
+
+                    </div>
                     <div class="border-bottom border-3 pb-3 mb-3">
                         <form id="add_image_form">
                             <label class="form-label fw-bold">Add Image</label>
@@ -535,7 +539,7 @@ adminLogin();
                 } else if (this.responseText == 'update_failed') {
                     alert('error', 'Image upload failed , Server down ');
                 } else {
-                    alert('success', 'New Image added');
+                    alert('success', 'New Image added', 'image-alert');
                     add_image_form.reset();
 
                 }
