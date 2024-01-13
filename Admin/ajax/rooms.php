@@ -223,5 +223,23 @@ if (isset($_POST['add_image'])) {
         echo $res;
     }
 }
+if (isset($_POST['get_room_images'])) {
+
+    $frm_data = filteration($_POST);
+
+    $res = select("SELECT * FROM `room_images` WHERE `room_id`=?", [$frm_data['get_room_images']], 'i');
+
+    $path = ROOMS_IMG_PATH;
+    while ($row = mysqli_fetch_assoc($res)) {
+
+        echo <<<data
+            <tr class='align-middle'>
+            <td><img src = '$path$row[image]' class='img-fluid'></td>
+            <td>thumb</td>
+            <td>delete</td>
+            </tr>
+        data;
+    }
+}
 
 ?>

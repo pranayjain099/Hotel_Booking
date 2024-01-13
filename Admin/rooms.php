@@ -553,6 +553,18 @@ adminLogin();
 
             document.querySelector("#room-images .modal-title").innerText = rname;
             add_image_form.elements['room_id'].value = id;
+            add_image_form.elements['image'].value = '';
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/rooms.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+
+                document.getElementById('room-image-data').innerHTML = this.responseText;
+            }
+
+            xhr.send('get_room_images=' + id);
         }
 
         window.onload = function () {
