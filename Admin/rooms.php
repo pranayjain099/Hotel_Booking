@@ -532,16 +532,17 @@ adminLogin();
             xhr.onload = function () {
 
                 if (this.responseText == 'inv_img') {
-                    alert('error', 'only JPG,WEBP or PNG Images are allowed');
+                    alert('error', 'only JPG,WEBP or PNG Images are allowed', 'image-alert');
 
                 } else if (this.responseText == 'inv_size') {
-                    alert('error', 'Image shouldbe less than 2MB');
+                    alert('error', 'Image shouldbe less than 2MB', 'image-alert');
                 } else if (this.responseText == 'update_failed') {
-                    alert('error', 'Image upload failed , Server down ');
+                    alert('error', 'Image upload failed , Server down ', 'image-alert');
                 } else {
                     alert('success', 'New Image added', 'image-alert');
-                    add_image_form.reset();
 
+                    room_images(add_image_form.elements['room_id'].value, document.querySelector("#room-images .modal-title").innerText);
+                    add_image_form.reset();
                 }
             }
 
@@ -565,6 +566,34 @@ adminLogin();
             }
 
             xhr.send('get_room_images=' + id);
+        }
+
+        function rem_image(img_id, room_id) {
+
+            let data = new FormData();
+
+            data.append('image_id', img_id);
+            data.append('room_id', room_id);
+            data.append('rem_image', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/rooms.php", true);
+
+            xhr.onload = function () {
+
+                if (this.responseText == 1) {
+
+                    alert('success', 'Image removed', 'image-alert');
+
+                    room_images(room_id, document.querySelector("#room-images .modal-title").innerText);
+
+                } else {
+                    alert('error', 'Image removal Failed!', 'image-alert');
+
+                }
+            }
+
+            xhr.send(data);
         }
 
         window.onload = function () {

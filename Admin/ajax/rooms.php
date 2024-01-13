@@ -236,9 +236,31 @@ if (isset($_POST['get_room_images'])) {
             <tr class='align-middle'>
             <td><img src = '$path$row[image]' class='img-fluid'></td>
             <td>thumb</td>
-            <td>delete</td>
+            <td>
+                <button onclick='rem_image($row[sr_no],$row[room_id])' class='btn btn-danger btn-sm shadow-none'><i class='bi bi-trash'></i>
+                </button>
+            </td>
             </tr>
         data;
+    }
+}
+
+if (isset($_POST['rem_image'])) {
+
+    $frm_data = filteration($_POST);
+    $values = [$frm_data['image_id'], $frm_data['room_id']];
+
+    $pre_q = "SELECT* FROM `room_images` WHERE `sr_no`=? AND `room_id` =?";
+    $res = select($pre_q, $values, 'ii');
+    $img = mysqli_fetch_assoc($res);
+
+    if (deleteImage($img['image'], ROOMS_FOLDER)) {
+        $q = "DELETE FROM `room_images` WHERE `sr_no`=? AND `room_id`=?";
+        $res = delete($q, $values, 'ii');
+        echo $res;
+
+    } else {
+        echo 0;
     }
 }
 
