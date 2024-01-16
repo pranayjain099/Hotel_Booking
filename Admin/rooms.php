@@ -596,6 +596,34 @@ adminLogin();
             xhr.send(data);
         }
 
+        function thumb_image(img_id, room_id) {
+
+            let data = new FormData();
+
+            data.append('image_id', img_id);
+            data.append('room_id', room_id);
+            data.append('thumb_image', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/rooms.php", true);
+
+            xhr.onload = function () {
+
+                if (this.responseText == 1) {
+
+                    alert('success', 'Image Thumbnail Changed', 'image-alert');
+
+                    room_images(room_id, document.querySelector("#room-images .modal-title").innerText);
+
+                } else {
+                    alert('error', 'Image removal Failed!', 'image-alert');
+
+                }
+            }
+
+            xhr.send(data);
+        }
+
 
 
         window.onload = function () {
