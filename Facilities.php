@@ -10,8 +10,6 @@
     <?php
     require('include/links.php')
         ?>
-
-
     <style>
         .pop:hover {
             border-top-color: var(--teal) !important;

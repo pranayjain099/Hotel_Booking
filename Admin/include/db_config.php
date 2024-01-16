@@ -38,8 +38,6 @@ function selectAll($table)
     return $res;
 
 }
-// function for prepared statement
-// in prepared statement we preapre the query then bind the parameters in statements then execute it and we get the result
 
 // Takes three parameters sql query , values and datatype.
 function select($sql, $values, $datatypes)
@@ -48,17 +46,17 @@ function select($sql, $values, $datatypes)
     $con = $GLOBALS['con'];
 
     // if query gets prepared then store it in varibale else die.
-    // stmt is variable defined by us you can give any name.
     if ($stmt = mysqli_prepare($con, $sql)) {
 
         // now to send multiple values dynamically in mysqli_bind_param() we used splat operator (3 dots before variable).you can see $values is a array.
         // mysqli_stmta_bind_param($stmt, $datatypes, $a,$b,$c); instead of this 
-        // do this
+        // do this beacuse we want to make this function dynamic if any other form will have 7 to 8 operator then we will need to create seperate function for that so instead take values dynamically.
+
         mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
 
-        // after binding execute the stmt and ab uske sath values binf ho chuki h
+        // after binding execute the stmt and ab uske sath values bind ho chuki h
         if (mysqli_stmt_execute($stmt)) { // if sucessfull gets executed then
-            // store the result jo bhi result aaye query chalne ke baad
+            // store the result
             $res = mysqli_stmt_get_result($stmt);
             mysqli_stmt_close($stmt); // closing the preapred statement
             return $res;

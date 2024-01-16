@@ -596,6 +596,8 @@ adminLogin();
             xhr.send(data);
         }
 
+
+
         window.onload = function () {
             get_all_rooms();
         }
