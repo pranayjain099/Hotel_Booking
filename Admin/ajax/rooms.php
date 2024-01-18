@@ -94,6 +94,9 @@ if (isset($_POST['get_all_rooms'])) {
                 <button type='button' onclick=\"room_images($row[id],'$row[name]')\" class='btn btn-info shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#room-images'>
                     <i class='bi bi-images'></i> Edit
                 </button>  
+                <button type='button' onclick='remove_room($row[id])\' class='btn btn-danger shadow-none btn-sm'>
+                    <i class='bi bi-trash'></i> Delete
+                </button>  
                 </td>
             </tr>     
         ";
@@ -289,5 +292,6 @@ if (isset($_POST['thumb_image'])) {
     echo $res;
 
 }
+
 
 ?>

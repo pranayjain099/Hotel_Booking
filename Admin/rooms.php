@@ -624,6 +624,37 @@ adminLogin();
             xhr.send(data);
         }
 
+        function remove_room(room_id) {
+
+            if (confirm("Are you sure , you want to delete this room ?")) {
+
+                let data = new FormData();
+                data.append('room_id', room_id);
+                data.append('remove_room', '');
+
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "ajax/rooms.php", true);
+
+                xhr.onload = function () {
+
+                    if (this.responseText == 1) {
+
+                        alert('success', 'Room Removed !');
+
+                        get_all_rooms();
+
+                    } else {
+                        alert('error', 'Remove removal failed');
+
+                    }
+                }
+
+                xhr.send(data);
+            }
+
+
+        }
+
 
 
         window.onload = function () {
