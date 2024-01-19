@@ -2,9 +2,7 @@
 require('include/essentials.php');
 require('include/db_config.php');
 adminLogin();
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
