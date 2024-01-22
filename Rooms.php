@@ -82,6 +82,20 @@
             </div>
 
             <div class="col-lg-9 col-md-12 px-4">
+
+                <?php
+                $room_res = select("SELECT * FROM `rooms` WHERE `status`=?", [1, 0], 'ii');
+
+                while ($room_data = mysqli_fetch_assoc($room_res)) {
+
+                    // get features of room
+                
+                }
+                ?>
+
+
+
+
                 <!-- Horizontal Cards -->
                 <div class="card mb-4 border-0 shadow">
                     <div class="row g-0 p-3 align-item-center">
