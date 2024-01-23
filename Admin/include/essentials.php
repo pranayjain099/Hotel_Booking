@@ -6,7 +6,8 @@ define('SITE_URL', 'http://127.0.0.1/Hotel_Booking/');
 define('ABOUT_IMG_PATH', '../image/about/');
 define('CAROUSEL_IMG_PATH', '../image/carousel/');
 define('CAROUSEL_IMG_PATH1', '../Hotel_Booking/image/carousel/');
-define('ROOMS_IMG_PATH', '../image/rooms/');
+define('ROOMS_IMG_PATH', '../image/Rooms/');
+define('ROOMS_IMG_PATH1', '../Hotel_Booking/image/Rooms/');
 
 define('FACILITIES_IMG_PATH', '../image/facilities/');
 define('FACILITIES_IMG_PATH1', '../Hotel_Booking/image/facilities/');
